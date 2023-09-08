@@ -11,6 +11,7 @@ import {
   ListItem,
   ListIcon,
   Spacer,
+  Link,
 } from "@chakra-ui/react";
 
 import {
@@ -21,9 +22,6 @@ import {
 } from "../icons/icons";
 
 const SideBar = () => {
-  const listProperty = {
-    dashbord: "../../img/dashbord.svg",
-  };
   return (
     <Flex
       h="100%"
@@ -44,7 +42,7 @@ const SideBar = () => {
           </Text>
         </Flex>
       </Container>
-      <Container>
+      <Container w="120px" p="0">
         <UnorderedList
           color="#777D99"
           styleType="none"
@@ -53,39 +51,56 @@ const SideBar = () => {
           spacing={55}
           letter="3%"
           fontFamily="Poppins"
+          h="456px"
+          w="120px"
         >
           <ListItem>
-            <ListIcon />
-            Dashbord
+            <Flex>
+              <ListIcon />
+              <Link>Dashbord</Link>
+            </Flex>
           </ListItem>
           <ListItem color="#E1E6FB">
-            <ListIcon />
-            Stake
+            <Flex>
+              <ListIcon />
+              <Link>Stake</Link>
+            </Flex>
           </ListItem>
           <ListItem>
-            <ListIcon />
-            Split
+            <Flex>
+              <ListIcon />
+              <Link>Split</Link>
+            </Flex>
           </ListItem>
           <ListItem>
-            <ListIcon />
-            Pools
+            <Flex>
+              <ListIcon />
+              <Link>Pools</Link>
+            </Flex>
           </ListItem>
           <ListItem>
-            <ListIcon />
-            Swap
+            <Flex>
+              <ListIcon />
+              <Link> Swap</Link>
+            </Flex>
           </ListItem>
           <ListItem>
-            <ListIcon />
-            Governance
+            <Flex>
+              <ListIcon />
+
+              <Link> Governance</Link>
+            </Flex>
           </ListItem>
           <ListItem>
-            <ListIcon />
-            Analytics
+            <Flex>
+              <ListIcon />
+              <Link>Analytics</Link>
+            </Flex>
           </ListItem>
         </UnorderedList>
       </Container>
-      <Box>
-        <Flex w="120px" justifyContent="center" alingItems="center">
+      <Flex w="100%" justifyContent="center" alignItems="center">
+        <Flex w="120px">
           <TwitterIcon />
           <Spacer />
           <LinkedInIcon />
@@ -94,7 +109,7 @@ const SideBar = () => {
           <Spacer />
           <GitHubIcon />
         </Flex>
-      </Box>
+      </Flex>
     </Flex>
   );
 };
