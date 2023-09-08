@@ -19,6 +19,13 @@ import {
   LinkedInIcon,
   DiscordIcon,
   GitHubIcon,
+  Dashbord,
+  Stake,
+  Split,
+  Pools,
+  Swap,
+  Cover,
+  Analytics,
 } from "../icons/icons";
 
 const SideBar = () => {
@@ -55,51 +62,50 @@ const SideBar = () => {
           w="120px"
         >
           <ListItem>
-            <Flex>
-              <ListIcon />
-              <Link>Dashbord</Link>
+            <Flex alignItems="center">
+              <Dashbord />
+              <Link ml="16px">Dashbord</Link>
             </Flex>
           </ListItem>
           <ListItem color="#E1E6FB">
-            <Flex>
-              <ListIcon />
-              <Link>Stake</Link>
+            <Flex alignItems="center">
+              <Stake />
+              <Link ml="16px">Stake</Link>
             </Flex>
           </ListItem>
           <ListItem>
-            <Flex>
-              <ListIcon />
-              <Link>Split</Link>
+            <Flex alignItems="center">
+              <Split />
+              <Link ml="16px">Split</Link>
             </Flex>
           </ListItem>
           <ListItem>
-            <Flex>
-              <ListIcon />
-              <Link>Pools</Link>
+            <Flex alignItems="center">
+              <Pools />
+              <Link ml="16px">Pools</Link>
             </Flex>
           </ListItem>
           <ListItem>
-            <Flex>
-              <ListIcon />
-              <Link> Swap</Link>
+            <Flex alignItems="center">
+              <Swap />
+              <Link ml="16px"> Swap</Link>
             </Flex>
           </ListItem>
           <ListItem>
-            <Flex>
-              <ListIcon />
-
-              <Link> Governance</Link>
+            <Flex alignItems="center">
+              <Cover />
+              <Link ml="16px"> Governance</Link>
             </Flex>
           </ListItem>
           <ListItem>
-            <Flex>
-              <ListIcon />
-              <Link>Analytics</Link>
+            <Flex alignItems="center">
+              <Analytics />
+              <Link ml="16px">Analytics</Link>
             </Flex>
           </ListItem>
         </UnorderedList>
       </Container>
-      <Flex w="100%" justifyContent="center" alignItems="center">
+      <Center>
         <Flex w="120px">
           <TwitterIcon />
           <Spacer />
@@ -109,7 +115,7 @@ const SideBar = () => {
           <Spacer />
           <GitHubIcon />
         </Flex>
-      </Flex>
+      </Center>
     </Flex>
   );
 };
