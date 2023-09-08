@@ -1,6 +1,5 @@
 "use client";
 import {
-  Box,
   Image,
   Circle,
   Text,
@@ -9,7 +8,6 @@ import {
   Flex,
   UnorderedList,
   ListItem,
-  ListIcon,
   Spacer,
   Link,
 } from "@chakra-ui/react";
@@ -28,34 +26,40 @@ import {
   Analytics,
 } from "../icons/icons";
 
+import "./fonts.css";
+
 const SideBar = () => {
   return (
     <Flex
-      h="100%"
+      h="1024px"
       w="13.9%"
       flexDirection="column"
       alingItems="center"
-      justifyContent="space-around"
+      //   justifyContent="space-around"
+      fontFamily="Poppins, sans-serif"
+      lineHeight="24px"
     >
-      <Container w="100%">
-        <Image src="" alt="ssss" w="92px" h="16px" />
-        <Flex>
-          <Center mr="8px">
-            <Circle size="8px" bg="#FF5F72" color="white"></Circle>
-          </Center>
+      <Container w="120px" mt="104px">
+        <Flex flexDirection="column" justifyContent="space-around" h="90px">
+          <Image src="" alt="ssss" w="92px" h="16px" />
+          <Flex>
+            <Center mr="8px">
+              <Circle size="8px" bg="#FF5F72" color="white"></Circle>
+            </Center>
 
-          <Text color="#777D99" fontSize="12" fontWeight="700">
-            LIVE
-          </Text>
+            <Text color="#777D99" fontSize="12" fontWeight="700">
+              LIVE
+            </Text>
+          </Flex>
         </Flex>
       </Container>
-      <Container w="120px" p="0">
+      <Container w="120px" p="0" mt="92px">
         <UnorderedList
           color="#777D99"
           styleType="none"
           fontSize="12px"
           fontWeight="700"
-          spacing={55}
+          spacing={45}
           letter="3%"
           fontFamily="Poppins"
           h="456px"
@@ -70,7 +74,9 @@ const SideBar = () => {
           <ListItem color="#E1E6FB">
             <Flex alignItems="center">
               <Stake />
-              <Link ml="16px">Stake</Link>
+              <Link ml="16px" ineHeight="24px">
+                Stake
+              </Link>
             </Flex>
           </ListItem>
           <ListItem>
@@ -105,7 +111,7 @@ const SideBar = () => {
           </ListItem>
         </UnorderedList>
       </Container>
-      <Center>
+      <Center mt="164px">
         <Flex w="120px">
           <TwitterIcon />
           <Spacer />
