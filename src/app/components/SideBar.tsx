@@ -26,7 +26,7 @@ import {
   Analytics,
 } from "../icons/icons";
 
-import "./fonts.css";
+import "../fonts.css";
 
 const SideBar = () => {
   return (
@@ -34,8 +34,7 @@ const SideBar = () => {
       h="1024px"
       w="13.9%"
       flexDirection="column"
-      alingItems="center"
-      //   justifyContent="space-around"
+      alignItems="center"
       fontFamily="Poppins, sans-serif"
       lineHeight="24px"
     >
@@ -60,7 +59,6 @@ const SideBar = () => {
           fontSize="12px"
           fontWeight="700"
           spacing={45}
-          letter="3%"
           fontFamily="Poppins"
           h="456px"
           w="120px"
@@ -74,7 +72,7 @@ const SideBar = () => {
           <ListItem color="#E1E6FB">
             <Flex alignItems="center">
               <Stake />
-              <Link ml="16px" ineHeight="24px">
+              <Link ml="16px" lineHeight="24px">
                 Stake
               </Link>
             </Flex>
