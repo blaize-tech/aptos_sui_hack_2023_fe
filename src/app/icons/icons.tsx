@@ -310,7 +310,7 @@ export const Analytics: React.FC = () => {
 
 export const StarIcon: React.FC = () => {
   return (
-    <Icon viewBox="0 0 17 16" fill="none">
+    <Icon w="17px" h="16px" viewBox="0 0 17 16" fill="none">
       <path
         d="M6.18737 15.5L1.90471 12.4663L4.26874 9.33146L0.5 8.15168L2.11028 3.16292L5.84475 4.41011V0.5H11.121V4.41011L14.8897 3.16292L16.5 8.15168L12.7313 9.33146L15.0953 12.4663L10.8812 15.5L8.44861 12.3652L6.18737 15.5Z"
         fill="#777D99"

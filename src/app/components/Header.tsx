@@ -16,6 +16,7 @@ const Header: React.FC<HeaderInterface> = ({ heading }) => {
             fontSize="89px"
             fontWeight="700"
             fontFamily="Orbitron"
+            textTransform="capitalize"
           >
             {heading}
           </Heading>
