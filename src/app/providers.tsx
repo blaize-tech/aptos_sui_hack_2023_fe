@@ -5,30 +5,31 @@ import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { extendTheme } from "@chakra-ui/react";
-import { buttonTheme, tableHead, tableDtext } from "./theme/themes";
+import { buttonTheme, tableHead, textConfig } from "./theme/themes";
 
 export const theme = extendTheme({
   components: {
     Button: buttonTheme,
-    Text: {
-      variants: {
-        tableHead: {
-          fontFamily: "Poppins",
-          fontWeight: "700",
-          fontSize: "10px",
-          lineHeight: "15px",
-          color: "#777D99",
-          opacity: "100%",
-        },
-        tableText: {
-          fontFamily: "Poppins",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "21px",
-          color: "#777D99",
-        },
-      },
-    },
+    Text: { textConfig, tableHead },
+    // variants: {
+    //   tableHead,
+    //   tableText
+    //   // tableHead: {
+    //   //   fontFamily: "Poppins",
+    //   //   fontWeight: "700",
+    //   //   fontSize: "10px",
+    //   //   lineHeight: "15px",
+    //   //   color: "#777D99",
+    //   //   opacity: "100%",
+    //   // },
+    //   // tableText: {
+    //   //   fontFamily: "Poppins",
+    //   //   fontWeight: "400",
+    //   //   fontSize: "14px",
+    //   //   lineHeight: "21px",
+    //   //   color: "#777D99",
+    //   // },
+    // },
   },
 });
 

@@ -1,9 +1,11 @@
 "use client";
 
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Select } from "@chakra-ui/react";
 import { MenyIcon, StarIcon } from "@/app/icons/icons";
+import Image from "next/image";
+import luna from "../../../../public/luna.png";
 
-const Select: React.FC = () => {
+const SelectComponnent: React.FC = () => {
   return (
     <Flex
       w="328px"
@@ -41,21 +43,28 @@ const Select: React.FC = () => {
         >
           0.00
         </Text>
-        <StarIcon />
+        <Image src={luna} width={24} height={24} alt="luna" />
 
-        <Text
+        <Select
+          placeholder="Luna"
+          variant="unstyled"
+          icon={<MenyIcon />}
+          w="96px"
+          bg="none"
+          defaultValue="option1"
+          color="#777D99"
           fontFamily="Poppins"
           fontWeight="500"
           fontSize="16px"
           lineHeight="24px"
-          color="#777D99"
+          textAlign="center"
         >
-          Luna
-        </Text>
-        <MenyIcon />
+          <option value="option1">pLuna</option>
+          <option value="option2">TLuna</option>
+        </Select>
       </Flex>
     </Flex>
   );
 };
 
-export default Select;
+export default SelectComponnent;

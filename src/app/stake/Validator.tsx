@@ -1,5 +1,5 @@
 "use client";
-import { Text, Flex, Box } from "@chakra-ui/react";
+import { Text, Flex } from "@chakra-ui/react";
 import { MenyIcon } from "../icons/icons";
 
 const Validator: React.FC = () => {

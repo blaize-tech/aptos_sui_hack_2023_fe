@@ -2,11 +2,12 @@
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
 import { Text, Center, Flex, Box, Button } from "@chakra-ui/react";
-
+import "../globals.css";
 import BalanceGroup from "./balance/BalanceGroup";
-import Validator from "./Validarot";
+import Validator from "./Validator";
 import RateList from "./Rate/RateList";
 import SemiHead from "./SemiHead";
+import bg from "../../../public/bg.svg";
 
 const Stake: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Stake: React.FC = () => {
         flexDirection="column"
         alignItems="center"
         justifyContent="space-evenly"
+        bgImage={bg}
       >
         <Header heading="stake" />
         <SemiHead />
@@ -26,7 +28,7 @@ const Stake: React.FC = () => {
           <RateList />
         </Flex>
         <Center>
-          <Button variant="primaryButton">
+          <Button variant="primaryButton" type="button">
             <Text>accept and bond</Text>
           </Button>
         </Center>

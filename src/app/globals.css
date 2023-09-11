@@ -1,14 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
-}
-
-html {
 }
 
 body {
@@ -22,10 +19,11 @@ aside {
 }
 
 section {
-  background-image: url("../img/mask-group.png");
+  /* background-image: url("../../public/bg.svg"); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
   height: 1024px;
+  /* width: 100%; */
   width: 86.112%;
 }

@@ -1,6 +1,5 @@
 "use client";
 import {
-  Image,
   Circle,
   Text,
   Center,
@@ -9,7 +8,6 @@ import {
   UnorderedList,
   ListItem,
   Spacer,
-  Link,
 } from "@chakra-ui/react";
 
 import {
@@ -25,6 +23,10 @@ import {
   Cover,
   Analytics,
 } from "../icons/icons";
+import logo from "../../../public/logo.svg";
+
+import Link from "next/link";
+import Image from "next/image";
 
 import "../fonts.css";
 
@@ -40,7 +42,7 @@ const SideBar = () => {
     >
       <Container w="120px" mt="104px">
         <Flex flexDirection="column" justifyContent="space-around" h="90px">
-          <Image src="log.png" alt="ssss" w="92px" h="16px" />
+          <Image src={logo} width={92} height={16} alt="LOGO"></Image>
           <Flex>
             <Center mr="8px">
               <Circle size="8px" bg="#FF5F72" color="white"></Circle>
@@ -64,52 +66,63 @@ const SideBar = () => {
           w="120px"
         >
           <ListItem>
-            <Flex alignItems="center">
-              <Dashbord />
-              <Link ml="16px">Dashbord</Link>
-            </Flex>
+            <Link href="/">
+              <Flex alignItems="center">
+                <Dashbord />
+                <Text ml="16px">Dashboard</Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem color="#E1E6FB">
-            <Flex alignItems="center">
-              <Stake />
-              <Link ml="16px" lineHeight="24px" href="/stake">
-                Stake
-              </Link>
-            </Flex>
+            <Link href="/stake">
+              <Flex alignItems="center">
+                <Stake />
+                <Text ml="16px" lineHeight="24px">
+                  Stake
+                </Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem>
-            <Flex alignItems="center">
-              <Split />
-              <Link ml="16px" href="/split">
-                Split
-              </Link>
-            </Flex>
+            <Link href="/split">
+              <Flex alignItems="center">
+                <Split />
+
+                <Text ml="16px">Split</Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem>
-            <Flex alignItems="center">
-              <Pools />
-              <Link ml="16px" href="pools">
-                Pools
-              </Link>
-            </Flex>
+            <Link href="/pools">
+              <Flex alignItems="center">
+                <Pools />
+                <Text ml="16px">Pools</Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem>
-            <Flex alignItems="center">
-              <Swap />
-              <Link ml="16px"> Swap</Link>
-            </Flex>
+            <Link href="/">
+              <Flex alignItems="center">
+                <Swap />
+                <Text ml="16px"> Swap</Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem>
-            <Flex alignItems="center">
-              <Cover />
-              <Link ml="16px"> Governance</Link>
-            </Flex>
+            <Link href="/">
+              <Flex alignItems="center">
+                <Cover />
+                <Text ml="16px"> Governance</Text>
+              </Flex>
+            </Link>
           </ListItem>
           <ListItem>
-            <Flex alignItems="center">
-              <Analytics />
-              <Link ml="16px">Analytics</Link>
-            </Flex>
+            <Link href="/">
+              <Flex alignItems="center">
+                <Analytics />
+                <Text ml="16px">Analytics</Text>
+              </Flex>
+            </Link>
           </ListItem>
         </UnorderedList>
       </Container>

@@ -4,7 +4,7 @@ import "../fonts.css";
 const primaryButton = defineStyle({
   width: "237px",
   height: "48px",
-  bgColor: "#3387B7",
+  bg: "#3387B7",
   borderRadius: "8px",
   fontWeight: " 900",
   color: "#F5FAFF",
@@ -15,20 +15,21 @@ const primaryButton = defineStyle({
   letterSpacing: "10%",
   lineHeight: "24.08px",
 });
+
 const tableDHead = defineStyle({
   fontFamily: "Poppins",
   fontWeight: "700",
   fontSize: "10px",
   lineHeight: "15px",
-  color: "#777D99",
+  color: "red",
 });
 
-const tableDText = defineStyle({
+const tableText = defineStyle({
   fontFamily: "Poppins",
   fontWeight: "400",
   fontSize: "14px",
   lineHeight: "21px",
-  color: "#777D99",
+  color: "red",
 });
 
 export const buttonTheme = defineStyleConfig({
@@ -38,6 +39,6 @@ export const buttonTheme = defineStyleConfig({
 export const tableHead = defineStyleConfig({
   variants: { tableDHead },
 });
-export const tableDtext = defineStyleConfig({
-  variants: { tableDText },
+export const textConfig = defineStyleConfig({
+  variants: { tableText, tableDHead },
 });

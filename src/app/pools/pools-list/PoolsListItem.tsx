@@ -1,13 +1,20 @@
 import { MenyIcon } from "@/app/icons/icons";
-import { StarIcon } from "@/app/icons/icons";
-import { Tr, Td, Flex, Center, Text } from "@chakra-ui/react";
+import Image from "next/image";
+import { Flex, Center, Text, ListItem } from "@chakra-ui/react";
+import luna from "../../../../public/luna.png";
 
-const PoolsTableRow: React.FC = () => {
+const PoolsListItem: React.FC = () => {
   return (
-    <Tr color="#FFF" bg="rgba(29, 39, 71, 0.4)">
-      <Td borderLeftRadius="24px">
-        <Flex justifyContent="space-between" alignItems="center">
-          <StarIcon />
+    <ListItem
+      color="#FFF"
+      bg="rgba(29, 39, 71, 0.4)"
+      borderRadius="24px"
+      h="104px"
+      mb="20px"
+    >
+      <Flex h="100%" w="100%" justifyContent="space-evenly">
+        <Flex justifyContent="space-between" alignItems="center" w="270px">
+          <Image src={luna} width={24} height={24} alt="luna" />
           <Text
             fontFamily="Orbitron"
             fontWeight="900"
@@ -49,8 +56,6 @@ const PoolsTableRow: React.FC = () => {
             </Text>
           </Center>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -59,8 +64,6 @@ const PoolsTableRow: React.FC = () => {
           <Text variant="tableHead">Earned</Text>
           <Text variant="tableText">0</Text>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -69,8 +72,6 @@ const PoolsTableRow: React.FC = () => {
           <Text variant="tableHead">Liquidity</Text>
           <Text variant="tableText">$6,136,811</Text>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -81,8 +82,6 @@ const PoolsTableRow: React.FC = () => {
             53.64%
           </Text>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -91,8 +90,6 @@ const PoolsTableRow: React.FC = () => {
           <Text variant="tableHead">Multiplier</Text>
           <Text variant="tableText">178x</Text>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -101,8 +98,6 @@ const PoolsTableRow: React.FC = () => {
           <Text variant="tableHead">Available</Text>
           <Text variant="tableText">0 LP</Text>
         </Flex>
-      </Td>
-      <Td>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -111,8 +106,6 @@ const PoolsTableRow: React.FC = () => {
           <Text variant="tableHead">Staked</Text>
           <Text variant="tableText">0 LP</Text>
         </Flex>
-      </Td>
-      <Td borderRightRadius="24px">
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -120,9 +113,9 @@ const PoolsTableRow: React.FC = () => {
         >
           <MenyIcon />
         </Flex>
-      </Td>
-    </Tr>
+      </Flex>
+    </ListItem>
   );
 };
 
-export default PoolsTableRow;
+export default PoolsListItem;

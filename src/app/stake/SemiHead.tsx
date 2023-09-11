@@ -5,7 +5,6 @@ const SemiHead: React.FC = () => {
   return (
     <Center
       color="#FFF"
-      h="47px"
       fontSize="30px"
       fontFamily="Orbitron"
       fontWeight="900"

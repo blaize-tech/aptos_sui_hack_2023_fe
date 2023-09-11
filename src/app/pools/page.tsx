@@ -3,7 +3,7 @@
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import { Text, Center, Flex, Box, Button } from "@chakra-ui/react";
-import PoolsTable from "./pools-table/PoolsTable";
+import PoolsList from "./pools-list/PoolsList";
 
 const Pools: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Pools: React.FC = () => {
         justifyContent="space-evenly"
       >
         <Header heading="pools" />
-        <PoolsTable />
+        <PoolsList />
         <Box h="48px"></Box>
       </Flex>
     </Flex>

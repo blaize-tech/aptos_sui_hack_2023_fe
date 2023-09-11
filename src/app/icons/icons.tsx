@@ -321,13 +321,29 @@ export const StarIcon: React.FC = () => {
 
 export const MenyIcon: React.FC = () => {
   return (
-    <Icon viewBox="0 0 14 9" fill="none">
+    <Icon viewBox="0 0 14 9" fill="none" w="20px" h="10px">
       <path
         d="M1 1L7 7L13 1"
         stroke="#777D99"
         strokeWidth="2"
         strokeLinecap="round"
       />
+    </Icon>
+  );
+};
+
+export const LogoIcon: React.FC = () => {
+  return (
+    <Icon>
+      <svg
+        width="92"
+        height="16"
+        viewBox="0 0 92 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="92" height="16" fill="#E1E6FB" />
+      </svg>
     </Icon>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import { Center, Flex, Text } from "@chakra-ui/react";
-import Select from "./Select";
+import SelectComponnent from "./Select";
 
 const SelectContainer: React.FC = () => {
   return (
@@ -17,9 +17,9 @@ const SelectContainer: React.FC = () => {
         </Text>
       </Center>
       <Flex justifyContent="space-between" mt="48px">
-        <Select />
-        <Select />
-        <Select />
+        <SelectComponnent />
+        <SelectComponnent />
+        <SelectComponnent />
       </Flex>
     </Flex>
   );
