@@ -1,11 +1,10 @@
-import Image from "next/image";
+import Image from 'next/image'
 import TestPage from "./test-page/page";
 
 export default function Home() {
   return (
-    <main>
-      <section></section>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <TestPage></TestPage>
     </main>
-  );
+  )
 }
