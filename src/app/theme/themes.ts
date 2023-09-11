@@ -15,20 +15,29 @@ const primaryButton = defineStyle({
   letterSpacing: "10%",
   lineHeight: "24.08px",
 });
+const tableDHead = defineStyle({
+  fontFamily: "Poppins",
+  fontWeight: "700",
+  fontSize: "10px",
+  lineHeight: "15px",
+  color: "#777D99",
+});
+
+const tableDText = defineStyle({
+  fontFamily: "Poppins",
+  fontWeight: "400",
+  fontSize: "14px",
+  lineHeight: "21px",
+  color: "#777D99",
+});
 
 export const buttonTheme = defineStyleConfig({
   variants: { primaryButton },
 });
 
-const semiHeading = defineStyle({
-  color: "#FFF",
-  height: "47px",
-  fontSize: "30px",
-  fontFamily: "Orbitron",
-  fontWeight: "900",
-  alignItems: "center",
+export const tableHead = defineStyleConfig({
+  variants: { tableDHead },
 });
-
-export const semiHeadingTheme = defineStyleConfig({
-  variants: { semiHeading },
+export const tableDtext = defineStyleConfig({
+  variants: { tableDText },
 });

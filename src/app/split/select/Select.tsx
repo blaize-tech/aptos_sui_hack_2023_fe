@@ -26,9 +26,8 @@ const Select: React.FC = () => {
         w="328px"
         h="64px"
         alignItems="center"
-        opacity="60%"
         borderRadius="16px"
-        bg="#1D2747"
+        bg="rgba(29, 39, 71, 0.4)"
         p="20px"
       >
         <Text

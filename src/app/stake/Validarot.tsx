@@ -9,9 +9,8 @@ const Validator: React.FC = () => {
       w="480px"
       h="64px"
       alignItems="center"
-      opacity="60%"
+      bg="rgba(29, 39, 71, 0.4)"
       borderRadius="16px"
-      bg="#1D2747"
       p="20px"
     >
       <Text

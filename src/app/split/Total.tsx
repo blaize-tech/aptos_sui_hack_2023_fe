@@ -7,8 +7,7 @@ const Total: React.FC = () => {
       <Flex
         w="185px"
         h="114px"
-        bg="#1D2747"
-        opacity="60%"
+        bg="rgba(29, 39, 71, 0.4)"
         borderRadius="24px"
         flexDirection="column"
         justifyContent="space-evenly"

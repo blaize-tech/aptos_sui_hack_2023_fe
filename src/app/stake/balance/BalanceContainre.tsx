@@ -6,9 +6,7 @@ const BalanceContainer: React.FC = () => {
     <Flex
       w="480px"
       h="135px"
-      opacity="60%"
-      //   bg="red"
-      bg="#1D2747"
+      bg="rgba(29, 39, 71, 0.4)"
       justifyContent="space-evenly"
       alignItems="center"
       mb="2px"
