@@ -1,5 +1,5 @@
 import aptos from "app/blockchain/aptos";
-import {AptosAccount, HexString} from "app/blockchain/aptos";
+import {AptosAccount, HexString} from "aptos";
 import {sha3_256} from "js-sha3";
 
 class Contract {
