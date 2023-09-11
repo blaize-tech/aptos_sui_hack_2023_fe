@@ -1,0 +1,88 @@
+import { Tr, Td, Flex, Box, Center, Text } from "@chakra-ui/react";
+
+const PoolsTableRow: React.FC = () => {
+  return (
+    <Tr color="#FFF" opacity="60%" bg="#1D274766">
+      <Td>
+        <Center>
+          <Text>ssssaaa</Text>
+          <Text>ssssaaa</Text>
+          <Text>ssssaaa</Text>
+          <Text>ssssaaa</Text>
+        </Center>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+      <Td>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>111111</Text>
+          <Text>222222</Text>
+        </Flex>
+      </Td>
+    </Tr>
+  );
+};
+
+export default PoolsTableRow;

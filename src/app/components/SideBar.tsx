@@ -40,7 +40,7 @@ const SideBar = () => {
     >
       <Container w="120px" mt="104px">
         <Flex flexDirection="column" justifyContent="space-around" h="90px">
-          <Image src="" alt="ssss" w="92px" h="16px" />
+          <Image src="log.png" alt="ssss" w="92px" h="16px" />
           <Flex>
             <Center mr="8px">
               <Circle size="8px" bg="#FF5F72" color="white"></Circle>
@@ -72,7 +72,7 @@ const SideBar = () => {
           <ListItem color="#E1E6FB">
             <Flex alignItems="center">
               <Stake />
-              <Link ml="16px" lineHeight="24px">
+              <Link ml="16px" lineHeight="24px" href="/stake">
                 Stake
               </Link>
             </Flex>
@@ -80,13 +80,17 @@ const SideBar = () => {
           <ListItem>
             <Flex alignItems="center">
               <Split />
-              <Link ml="16px">Split</Link>
+              <Link ml="16px" href="/split">
+                Split
+              </Link>
             </Flex>
           </ListItem>
           <ListItem>
             <Flex alignItems="center">
               <Pools />
-              <Link ml="16px">Pools</Link>
+              <Link ml="16px" href="pools">
+                Pools
+              </Link>
             </Flex>
           </ListItem>
           <ListItem>

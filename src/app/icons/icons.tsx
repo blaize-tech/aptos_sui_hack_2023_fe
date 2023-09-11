@@ -61,7 +61,7 @@ export const Dashbord: React.FC = () => {
           height="6"
           rx="1"
           stroke="#777D99"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <rect x="17" y="3" width="4" height="4" rx="2" fill="#777D99" />
         <rect x="3" y="17" width="4" height="4" rx="2" fill="#777D99" />
@@ -72,7 +72,7 @@ export const Dashbord: React.FC = () => {
           height="6"
           rx="1"
           stroke="#777D99"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </g>
     </Icon>
@@ -86,16 +86,16 @@ export const Stake: React.FC = () => {
         <path
           d="M19.625 18.965C20.496 17.895 21 16.562 21 15V14.464C20.9941 12.8293 20.5167 11.2311 19.625 9.861C17.597 6.707 14.468 4.225 10.711 2.795L8.625 2L9.188 5C9.476 7.01 8.324 8.948 6.375 10C4.338 11.1 3 12.794 3 14.912V15C3 17 4.5 19 6 20"
           stroke="#E1E6FB"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M12 22C10.343 22 9 20.3879 9 18.4C9 16.825 10.016 15.5639 10.91 14.4085L12 13L13.09 14.4085C13.984 15.565 15 16.825 15 18.4C15 20.3879 13.657 22 12 22Z"
           stroke="#599CFF"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -109,16 +109,16 @@ export const Split: React.FC = () => {
         <path
           d="M17 3H21V7M7 3H3V7"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M21 3L17 7M12 14.07C12.0003 12.7445 12.5269 11.4734 13.464 10.536L14 10M12 14.07V21M12 14.07C11.9997 12.7445 11.4731 11.4734 10.536 10.536L3 3M12 14.07V15"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -132,30 +132,30 @@ export const Pools: React.FC = () => {
         <path
           d="M5.5 22C6.88071 22 8 20.8807 8 19.5C8 18.1193 6.88071 17 5.5 17C4.11929 17 3 18.1193 3 19.5C3 20.8807 4.11929 22 5.5 22Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M13 14C14.1046 14 15 13.1046 15 12C15 10.8954 14.1046 10 13 10C11.8954 10 11 10.8954 11 12C11 13.1046 11.8954 14 13 14Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M18.5 7C19.8807 7 21 5.88071 21 4.5C21 3.11929 19.8807 2 18.5 2C17.1193 2 16 3.11929 16 4.5C16 5.88071 17.1193 7 18.5 7Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M13 19H16.5C17.4283 19 18.3185 18.6313 18.9749 17.9749C19.6313 17.3185 20 16.4283 20 15.5C20 14.5717 19.6313 13.6815 18.9749 13.0251C18.3185 12.3687 17.4283 12 16.5 12H8.5C7.57174 12 6.6815 11.6313 6.02513 10.9749C5.36875 10.3185 5 9.42826 5 8.5C5 7.57174 5.36875 6.6815 6.02513 6.02513C6.6815 5.36875 7.57174 5 8.5 5H11"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -169,16 +169,16 @@ export const Swap: React.FC = () => {
         <path
           d="M8 4.5V3H21V15H8M8 15L10 13V17L8 15Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M16 19.5V21H3V9H16M16 9L14 11V7L16 9Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -192,65 +192,65 @@ export const Cover: React.FC = () => {
         <path
           d="M6 6H4C3.44772 6 3 6.44772 3 7V10C3 10.5523 3.44772 11 4 11H6C6.55228 11 7 10.5523 7 10V7C7 6.44772 6.55228 6 6 6Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M5 4V6"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M5 16V21"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M13 14H11C10.4477 14 10 14.4477 10 15V18C10 18.5523 10.4477 19 11 19H13C13.5523 19 14 18.5523 14 18V15C14 14.4477 13.5523 14 13 14Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M12 3V9"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M12 19V20"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M20 5H18C17.4477 5 17 5.44772 17 6V10C17 10.5523 17.4477 11 18 11H20C20.5523 11 21 10.5523 21 10V6C21 5.44772 20.5523 5 20 5Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M19 4V5"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M19 16V21"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -264,44 +264,44 @@ export const Analytics: React.FC = () => {
         <path
           d="M5 6.00003L7 11M13 17L18 19"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M15 9L18 6"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M4.5 6C5.32843 6 6 5.32843 6 4.5C6 3.67157 5.32843 3 4.5 3C3.67157 3 3 3.67157 3 4.5C3 5.32843 3.67157 6 4.5 6Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M19.5 6C20.3284 6 21 5.32843 21 4.5C21 3.67157 20.3284 3 19.5 3C18.6716 3 18 3.67157 18 4.5C18 5.32843 18.6716 6 19.5 6Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M19.5 21C20.3284 21 21 20.3284 21 19.5C21 18.6716 20.3284 18 19.5 18C18.6716 18 18 18.6716 18 19.5C18 20.3284 18.6716 21 19.5 21Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M8 21C10.7614 21 13 18.7614 13 16C13 13.2386 10.7614 11 8 11C5.23858 11 3 13.2386 3 16C3 18.7614 5.23858 21 8 21Z"
           stroke="#777D99"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </Icon>
@@ -325,8 +325,8 @@ export const MenyIcon: React.FC = () => {
       <path
         d="M1 1L7 7L13 1"
         stroke="#777D99"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </Icon>
   );
