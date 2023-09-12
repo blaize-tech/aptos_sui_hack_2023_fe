@@ -74,7 +74,7 @@ class BlockChainCore {
     }
 
     async getMetadata(asset): Promise<string> {
-        let contract = undefined;
+        let contract: any;
         for (let assetsContract of this.assetsContracts)
             if (assetsContract.getSymbol() == asset)
                 contract = assetsContract;

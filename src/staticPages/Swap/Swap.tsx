@@ -83,6 +83,7 @@ export const Swap = () => {
     const assetsOptions = [];
     assetSymbols.forEach((symbol) => {
         assetsOptions.push(
+            // @ts-ignore
             <option value={symbol} key={symbol}>
                 {symbol}
             </option>
