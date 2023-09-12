@@ -22,6 +22,7 @@ import {useStore} from "@utils/store";
 
 export const Stake = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [stakeAmount, setStakeAmount] = useState<number>(0);
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
@@ -37,10 +38,16 @@ export const Stake = () => {
   }, [wallet.connected, wallet.account]);
 
   const stake = async () => {
-    const hash = await blockChainCore.getStaking().stakeApt(wallet, 2342);
+    let value = stakeAmount * Math.pow(10, 8);
+    console.log("value", value);
+    const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
     console.log("|hash", hash)
     if (!!wallet.account && !!wallet.account.address)
       blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
+  };
+
+  const onChaneStakeAmount = (val) =>{
+    setStakeAmount(val.target.value);
   };
 
   return (
@@ -100,6 +107,8 @@ export const Stake = () => {
                         _focus={{
                           boxShadow: 'none',
                         }}
+                        value={stakeAmount}
+                        onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
                     <Flex alignItems="center" gap="28px">
@@ -147,6 +156,8 @@ export const Stake = () => {
                         _focus={{
                           boxShadow: 'none',
                         }}
+                        value={stakeAmount}
+                        onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
                     <Flex alignItems="center" gap="28px">
