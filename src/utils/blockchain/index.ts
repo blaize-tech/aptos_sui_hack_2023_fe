@@ -24,9 +24,9 @@ class BlockChainCore {
             process.env.NEXT_TOKEN_MODULE_PPHAPT_SYMBOL,
             process.env.NEXT_TOKEN_MODULE_YPHAPT_SYMBOL,
         ];
-        for (let symbol of symbols){
-            if(symbol)
-            this.assetsSymbols.push(symbol);
+        for (let symbol of symbols) {
+            if (symbol)
+                this.assetsSymbols.push(symbol);
         }
         this.assetsAddresses = new Map<string, string>();
         this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_PHAPT_ADDRESS;
@@ -69,8 +69,12 @@ class BlockChainCore {
         return this.swap;
     }
 
-    getAssetSymbols():  Array<string> {
+    getAssetSymbols(): Array<string> {
         return this.assetsSymbols;
+    }
+
+    async getMetadata(asset): Promise<string> {
+        return await this.assetsContracts[asset].getMetadata();
     }
 }
 

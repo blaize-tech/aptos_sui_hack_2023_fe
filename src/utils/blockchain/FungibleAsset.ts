@@ -26,7 +26,7 @@ class FungibleAsset {
         return (await response.json())[0];
     }
 
-    async getMetadata() {
+    async getMetadata(): Promise<string> {
         const response = await fetch(`${process.env.NEXT_APTOS_NODE_URL}/view`, {
             method: 'POST',
             headers: {
