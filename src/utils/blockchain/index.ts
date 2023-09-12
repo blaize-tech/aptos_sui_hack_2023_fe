@@ -74,7 +74,13 @@ class BlockChainCore {
     }
 
     async getMetadata(asset): Promise<string> {
-        return await this.assetsContracts[asset].getMetadata();
+        let contract = undefined;
+        for (let assetsContract of this.assetsContracts)
+            if (assetsContract.getSymbol() == asset)
+                contract = assetsContract;
+        if (contract)
+            return await contract.getMetadata();
+        return "";
     }
 }
 

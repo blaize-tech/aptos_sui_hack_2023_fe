@@ -50,11 +50,16 @@ export const Swap = () => {
         }, 3000)
     };
 
-    const swapAPt = async () => {
+    const swap = async () => {
+        if (symbolIn === symbolOut)
+            return;
         let value = swapAmountIn * aptPrecision;
         console.log("value", value);
-        const hash = await blockChainCore.getStaking().swapApt(wallet, value);
-        console.log("|hash", hash)
+        if (symbolIn === "APT") {
+            const tokenMetadata = await blockChainCore.getMetadata(symbolOut);
+            const hash = await blockChainCore.getSwap().swapAssetForCoin(wallet, tokenMetadata, value);
+            console.log("|hash", hash);
+        }
         requestUpdateInfo();
     };
 
@@ -217,7 +222,7 @@ export const Swap = () => {
                         </GridItem>
                     </Grid>
                     <Flex justifyContent="center">
-                        <Button onClick={swapAPt}>Accept and Swap</Button>
+                        <Button onClick={swap}>Accept and Swap</Button>
                     </Flex>
                 </Box>
             </Box>
