@@ -6,9 +6,13 @@ import {
   GridItem,
   Button,
   Flex,
-  Select,
   NumberInput,
   NumberInputField,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
@@ -22,9 +26,12 @@ import { PRECISION, PRICE } from '@utils/blockchain/aptos';
 import {useStore} from "@utils/store";
 
 export const Stake = () => {
+  const { onClose } = useDisclosure()
+
   const [activeTab, setActiveTab] = useState<number>(0);
   const [stakeAmount, setStakeAmount] = useState<number>(0);
   const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
@@ -46,18 +53,49 @@ export const Stake = () => {
     }, 3000)
   };
 
+  // const stakeAPt = async () => {
+  //   let value = stakeAmount * PRECISION;
+  //   console.log("value", value);
+  //   const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
+  //   console.log("|hash", hash)
+  //   requestUpdateInfo();
+  // };
+
+
   const stakeAPt = async () => {
-    let value = stakeAmount * PRECISION;
-    console.log("value", value);
-    const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
-    console.log("|hash", hash)
-    requestUpdateInfo();
+    setIsLoading(true);
+
+    try {
+      let value = stakeAmount * PRECISION;
+      console.log("value", value);
+      const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
+      console.log("|hash", hash);
+      requestUpdateInfo();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
+  // const withdrawAPt = async () => {
+  //   let value = withdrawAmount * PRECISION;
+  //   const hash = await blockChainCore.getStaking().withdrawApt(wallet, value);
+  //   requestUpdateInfo();
+  // };
+
   const withdrawAPt = async () => {
-    let value = withdrawAmount * PRECISION;
-    const hash = await blockChainCore.getStaking().withdrawApt(wallet, value);
-    requestUpdateInfo();
+    setIsLoading(true);
+
+    try {
+      let value = withdrawAmount * PRECISION;
+      const hash = await blockChainCore.getStaking().withdrawApt(wallet, value);
+      requestUpdateInfo();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onChaneStakeAmount = (val) =>{
@@ -372,6 +410,17 @@ export const Stake = () => {
           </TabList>
         </Box>
       </Box>
+      <Modal isOpen={isLoading} onClose={onClose} closeOnOverlayClick={false} isCentered>
+        <ModalOverlay />
+        <ModalContent bg="blue.dark" maxW="100%" w={600}>
+          <ModalBody textAlign="center" py="40px" w={600}>
+
+            <Text textAlign="center" fontFamily="orbitron"
+                  fontSize="24px" opacity="0.6"
+                  fontWeight={900}>Waiting for finalization ...</Text>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
