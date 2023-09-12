@@ -19,13 +19,14 @@ import {
 import {ConnectWalletButton} from '../../layout/components/ConnectWalletButton';
 import blockChainCore from "@utils/blockchain";
 import {useStore} from "@utils/store";
+import { PRICE, PRECISION } from '@utils/blockchain/aptos';
 
 export const Swap = () => {
     const [swapAmountIn, setSwapAmountIn] = useState<number>(0);
     const [swapAmountOut, setSwapAmountOut] = useState<number>(0);
     const [exchangeRate, setExchangeRate] = useState<number>(1);
     const [symbolIn, setSymbolIn] = useState<string>("APT");
-    const [symbolOut, setSymbolOut] = useState<string>("phAPT");
+    const [symbolOut, setSymbolOut] = useState<string>("APT");
 
     const assetSymbols = [...blockChainCore.getAssetSymbols(), "APT"];
 
@@ -35,37 +36,39 @@ export const Swap = () => {
     const balanceIn = store.state.balances[symbolIn] || "0";
     const balanceOut = store.state.balances[symbolOut] || "0";
 
-    const aptPrice = 5.09;
-    const aptPrecision = Math.pow(10, 8);
-
     useEffect(() => {
         if (!!wallet.account && !!wallet.account.address)
             blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
     }, [wallet.connected, wallet.account]);
 
     const updateRate = async () => {
+        let rate = 0.0;
         if (symbolIn === symbolOut) {
             setExchangeRate(1);
-            setSwapAmountOut(swapAmountIn);
         } else if (symbolIn === "APT") {
             const tokenMetadata = await blockChainCore.getMetadata(symbolOut);
-            const rate = await blockChainCore.getSwap().estimateCoinForAsset(1, tokenMetadata);
+            rate = await blockChainCore.getSwap().estimateCoinForAsset(100000000, tokenMetadata);
             console.log("rate", rate);
             setExchangeRate(rate);
-            if (rate === 0)
-                setSwapAmountOut(0);
-            else
-                setSwapAmountOut(swapAmountIn / rate);
-        } else {
+        } else if (symbolOut === "APT") {
             const tokenMetadata = await blockChainCore.getMetadata(symbolIn);
-            const rate = await blockChainCore.getSwap().estimateAssetForCoin(1, tokenMetadata);
+            rate = await blockChainCore.getSwap().estimateAssetForCoin(100000000, tokenMetadata);
             console.log("rate", rate);
             setExchangeRate(rate);
-            if (rate === 0)
-                setSwapAmountOut(0);
-            else
-                setSwapAmountOut(swapAmountIn / rate);
+        } else {
+            const tokenMetadataIn = await blockChainCore.getMetadata(symbolIn);
+            console.log("tokenMetadataIn", tokenMetadataIn);
+            const tokenMetadataOut = await blockChainCore.getMetadata(symbolOut);
+            console.log("tokenMetadataOut", tokenMetadataOut);
+            rate = await blockChainCore.getSwap().estimateAssetForAsset(100000000, tokenMetadataIn, tokenMetadataOut);
+            console.log("rate", rate);
+            setExchangeRate(rate);
         }
+
+        if (rate === 0)
+            setSwapAmountOut(swapAmountIn);
+        else
+            setSwapAmountOut(swapAmountIn * rate);
     };
 
     const requestUpdateInfo = () => {
@@ -79,23 +82,30 @@ export const Swap = () => {
     const swap = async () => {
         if (symbolIn === symbolOut)
             return;
-        let value = swapAmountIn * aptPrecision;
+        let value = swapAmountIn * PRECISION;
         console.log("value", value);
         if (symbolIn === "APT") {
             const tokenMetadata = await blockChainCore.getMetadata(symbolOut);
             console.log("tokenMetadata", tokenMetadata);
+            const hash = await blockChainCore.getSwap().swapCoinForAsset(wallet, tokenMetadata, value);
+            console.log("|hash", hash);
+        } else if (symbolOut === "APT") {
+            const tokenMetadata = await blockChainCore.getMetadata(symbolIn);
+            console.log("tokenMetadata", tokenMetadata);
             const hash = await blockChainCore.getSwap().swapAssetForCoin(wallet, tokenMetadata, value);
             console.log("|hash", hash);
         } else {
-            const tokenMetadata = await blockChainCore.getMetadata(symbolIn);
-            console.log("tokenMetadata", tokenMetadata);
-            const hash = await blockChainCore.getSwap().swapCoinForAsset(wallet, tokenMetadata, value);
+            const tokenMetadataIn = await blockChainCore.getMetadata(symbolIn);
+            console.log("tokenMetadataIn", tokenMetadataIn);
+            const tokenMetadataOut = await blockChainCore.getMetadata(symbolOut);
+            console.log("tokenMetadataOut", tokenMetadataOut);
+            const hash = await blockChainCore.getSwap().swapAssetForAsset(wallet, tokenMetadataIn, tokenMetadataOut, value);
             console.log("|hash", hash);
         }
         requestUpdateInfo();
     };
 
-    const onChaneSwapAmount = (val) => {
+    const onChangeSwapAmount = (val) => {
         setSwapAmountIn(val.target.value);
         updateRate().catch(console.error);
     };
@@ -103,10 +113,15 @@ export const Swap = () => {
     const handleChangeSymbolIn = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSymbolIn(event.target.value);
         updateRate().catch(console.error);
+
+        // console.log("symbolIn", event.target.value);
     };
+
     const handleChangeSymbolOut = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSymbolOut(event.target.value);
         updateRate().catch(console.error);
+
+        // console.log("symbolOut", event.target.value);
     };
 
     const assetsOptions = [];
@@ -146,8 +161,8 @@ export const Swap = () => {
                             mb="12px"
                             color="gray"
                         >
-                            <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
-                            <Text>Balance: {balanceIn / aptPrecision}</Text>
+                            <Text>${(PRICE * swapAmountIn).toFixed(2)}</Text>
+                            <Text>Balance: {balanceIn / PRECISION}</Text>
                         </Flex>
                         <Flex
                             justifyContent="space-between"
@@ -169,7 +184,7 @@ export const Swap = () => {
                                     _focus={{
                                         boxShadow: 'none',
                                     }}
-                                    onChange={onChaneSwapAmount}
+                                    onChange={onChangeSwapAmount}
                                 />
                             </NumberInput>
                             <Select
@@ -201,8 +216,8 @@ export const Swap = () => {
                             mb="12px"
                             color="gray"
                         >
-                            <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
-                            <Text>Balance: {balanceOut / aptPrecision}</Text>
+                            <Text>${(PRICE * swapAmountIn).toFixed(2)}</Text>
+                            <Text>Balance: {balanceOut / PRECISION}</Text>
                         </Flex>
                         <Flex
                             justifyContent="space-between"

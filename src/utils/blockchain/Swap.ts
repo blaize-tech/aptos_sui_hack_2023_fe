@@ -1,3 +1,5 @@
+import { PRECISION } from "./aptos";
+
 export interface PoolInfo {
     AssetName: string;
     Earned: string;
@@ -12,12 +14,12 @@ export interface PoolInfo {
 
 class Swap {
     contractAddress: string;
-    appMetadataAddress: string;
+    aptMetadataAddress: string;
 
     constructor(address) {
         this.contractAddress = address;
         // APT wrapped coin address
-        this.appMetadataAddress = "0xb80640bab1799912b502206144510a5ff74aa65de181909d5efed07464818e08"
+        this.aptMetadataAddress = "0xb80640bab1799912b502206144510a5ff74aa65de181909d5efed07464818e08"
     }
 
     getPoolsInfos(): Array<PoolInfo> {
@@ -79,7 +81,7 @@ class Swap {
             gas_unit_price: "100",
             expiration_timestamp_secs: new Date().getTime().toString(),
         };
-        console.log('payload', payload, "options", options);
+        // console.log('payload', payload, "options", options);
         return await wallet.signAndSubmitTransaction(payload, options).then(res => {
             return res.hash;
         });
@@ -97,7 +99,25 @@ class Swap {
             gas_unit_price: "100",
             expiration_timestamp_secs: new Date().getTime().toString(),
         };
-        console.log('payload', payload, "options", options);
+        // console.log('payload', payload, "options", options);
+        return await wallet.signAndSubmitTransaction(payload, options).then(res => {
+            return res.hash;
+        });
+    }
+
+    async swapAssetForAsset(wallet, tokenMetadataIn, tokenMetadataOut, amount) {
+        const payload = {
+            type: "entry_function_payload",
+            function: `${this.contractAddress}::router::swap_entry`,
+            type_arguments: [],
+            arguments: [amount.toString(), "1", tokenMetadataIn, tokenMetadataOut, false, wallet.account.address]
+        };
+        const options = {
+            max_gas_amount: "10000",
+            gas_unit_price: "100",
+            expiration_timestamp_secs: new Date().getTime().toString(),
+        };
+        // console.log('payload', payload, "options", options);
         return await wallet.signAndSubmitTransaction(payload, options).then(res => {
             return res.hash;
         });
@@ -117,15 +137,17 @@ class Swap {
             })
         });
         let [out, fee] = await response.json();
-        return Number.parseInt(out);
+
+        console.log(`out ${out}, fee ${fee}`);
+        return Number.parseInt(out) / PRECISION;
     }
 
     async estimateCoinForAsset(amountIn, tokenTo): Promise<number> {
-        return this.estimateAssetForAsset(amountIn, this.appMetadataAddress, tokenTo);
+        return this.estimateAssetForAsset(amountIn, this.aptMetadataAddress, tokenTo);
     }
 
     async estimateAssetForCoin(amountIn, tokenFrom): Promise<number> {
-        return this.estimateAssetForAsset(amountIn, tokenFrom, this.appMetadataAddress);
+        return this.estimateAssetForAsset(amountIn, tokenFrom, this.aptMetadataAddress);
     }
 }
 

@@ -19,8 +19,8 @@ class BlockChainCore {
         this.assetsSymbols = new Array<string>();
         this.assetsContracts = new Array<FungibleAsset>();
         const symbols = [
-            process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL,
             process.env.NEXT_TOKEN_MODULE_PHZ_SYMBOL,
+            process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL,
             process.env.NEXT_TOKEN_MODULE_PPHAPT_SYMBOL,
             process.env.NEXT_TOKEN_MODULE_YPHAPT_SYMBOL,
         ];
@@ -29,8 +29,8 @@ class BlockChainCore {
                 this.assetsSymbols.push(symbol);
         }
         this.assetsAddresses = new Map<string, string>();
-        this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_PHAPT_ADDRESS;
         this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_PHZ_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_PHZ_ADDRESS;
+        this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_PHAPT_ADDRESS;
         this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_PPHAPT_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_PPHAPT_ADDRESS;
         this.assetsAddresses[process.env.NEXT_TOKEN_MODULE_YPHAPT_SYMBOL || ""] = process.env.NEXT_TOKEN_MODULE_YPHAPT_ADDRESS;
     }
@@ -39,7 +39,7 @@ class BlockChainCore {
         if (this.initialized)
             return;
         this.initialized = true;
-        console.log("env", process.env);
+        // console.log("env", process.env);
 
         await aptos.updateClient(process.env.NEXT_APTOS_NODE_URL);
 
@@ -54,7 +54,7 @@ class BlockChainCore {
     async UpdateInfo(store, userAddress: string) {
         for (const assetContract of this.assetsContracts) {
             const balance = await assetContract.balanceOf(userAddress);
-            console.log("balance", assetContract.getSymbol(), balance);
+            // console.log("balance", assetContract.getSymbol(), balance);
             store.dispatch({type: "update-balance", asset: assetContract.getSymbol(), balance});
         }
         const aptosBalance = await aptos.getBalance(userAddress);
@@ -76,8 +76,10 @@ class BlockChainCore {
     async getMetadata(asset): Promise<string> {
         let contract: any;
         for (let assetsContract of this.assetsContracts)
-            if (assetsContract.getSymbol() == asset)
+            if (assetsContract.getSymbol().toUpperCase() == asset.toUpperCase()){
                 contract = assetsContract;
+                // console.log(contract);
+            }
         if (contract)
             return await contract.getMetadata();
         return "";
