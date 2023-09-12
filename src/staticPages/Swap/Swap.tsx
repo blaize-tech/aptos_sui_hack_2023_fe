@@ -25,7 +25,7 @@ export const Swap = () => {
     const [swapAmountOut, setSwapAmountOut] = useState<number>(0);
     const [exchangeRate, setExchangeRate] = useState<number>(1);
     const [symbolIn, setSymbolIn] = useState<string>("APT");
-    const [symbolOut, setSymbolOut] = useState<string>("phApt");
+    const [symbolOut, setSymbolOut] = useState<string>("phAPT");
 
     const assetSymbols = [...blockChainCore.getAssetSymbols(), "APT"];
 
@@ -99,15 +99,12 @@ export const Swap = () => {
                         <Text as="h1" mb="24px">
                             Swap
                         </Text>
-                        <Text color="gray" fontWeight={500}>
-                            Tagline Will Goes Here
-                        </Text>
                     </Box>
                     <ConnectWalletButton/>
                 </Grid>
                 <Box maxW="480px" m="0 auto">
                     <Box
-                        borderRadius="24px 24px 24px 24px"
+                        borderRadius="24px 24px 48px 48px"
                         p="32px"
                         bgColor="blue.darkLight"
                         mb="2px"
@@ -162,7 +159,7 @@ export const Swap = () => {
                     </Box>
                     {/*< ----- >*/}
                     <Box
-                        borderRadius="24px 24px 24px 24px"
+                        borderRadius="48px 48px 24px 24px"
                         p="32px"
                         bgColor="blue.darkLight"
                         mb="32px"

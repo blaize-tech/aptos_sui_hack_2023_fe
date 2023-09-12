@@ -6,6 +6,7 @@ import {
 } from '@chakra-ui/react';
 import {HtmlMeta} from '@look/components';
 import {Tab, TabList} from '@look/components/Tabs';
+import { AptCoin } from '@look/components/Icons';
 import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 import {useStore} from "@utils/store";
 import blockChainCore from "@utils/blockchain";
@@ -25,7 +26,7 @@ export const Split = () => {
   const store = useStore();
 
   const aptosBalance = store.state.balances["APT"] || "0";
-  const phAPTBalance = store.state.balances["phApt"] || "0";
+  const phAPTBalance = store.state.balances["phAPT"] || "0";
   const pPhAptBalance = store.state.balances["pPhApt"] || "0";
   const yPhAptBalance = store.state.balances["yPhApt"] || "0";
 
@@ -71,9 +72,6 @@ export const Split = () => {
           <Box>
             <Text as="h1" mb="24px">
               Split
-            </Text>
-            <Text color="gray" fontWeight={500}>
-              Tagline Will Goes Here
             </Text>
           </Box>
           <ConnectWalletButton />
@@ -125,16 +123,10 @@ export const Split = () => {
                           onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Select
-                      border={0}
-                      borderRadius="16px"
-                      fontWeight={500}
-                      color="gray"
-                      w="auto"
-                      pr="10px"
-                    >
-                      <option value="option2">phAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      phAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
                 <GridItem>
@@ -167,16 +159,10 @@ export const Split = () => {
                         // onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Select
-                      border={0}
-                      borderRadius="16px"
-                      fontWeight={500}
-                      color="gray"
-                      w="auto"
-                      pr="10px"
-                    >
-                      <option value="option2">pPhAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      pPhAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
                 <GridItem>
@@ -209,16 +195,10 @@ export const Split = () => {
                         // onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Select
-                      border={0}
-                      borderRadius="16px"
-                      fontWeight={500}
-                      color="gray"
-                      w="auto"
-                      pr="10px"
-                    >
-                      <option value="option3">yPhAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      yPhAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
               </Grid>
@@ -226,11 +206,6 @@ export const Split = () => {
                 <Button onClick={stakePhAPt}>Accept and Split</Button>
               </Flex>
             </Box>
-          </Tab>
-          <Tab title="Bond">
-            <Text py="70px" textAlign="center" fontFamily="orbitron"
-                  fontSize="50px" opacity="0.3"
-                  fontWeight={900}>- Coming soon -</Text>
           </Tab>
           <Tab title="Merge">
             <Box>
@@ -271,16 +246,10 @@ export const Split = () => {
                           onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
-                    <Select
-                        border={0}
-                        borderRadius="16px"
-                        fontWeight={500}
-                        color="gray"
-                        w="auto"
-                        pr="10px"
-                    >
-                      <option value="option2">pPhAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      pPhAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
                 <GridItem>
@@ -316,16 +285,10 @@ export const Split = () => {
                           onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
-                    <Select
-                        border={0}
-                        borderRadius="16px"
-                        fontWeight={500}
-                        color="gray"
-                        w="auto"
-                        pr="10px"
-                    >
-                      <option value="option3">yPhAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      yPhAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
                 <GridItem>
@@ -358,16 +321,10 @@ export const Split = () => {
                         // onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Select
-                        border={0}
-                        borderRadius="16px"
-                        fontWeight={500}
-                        color="gray"
-                        w="auto"
-                        pr="10px"
-                    >
-                      <option value="option2">phAPT</option>
-                    </Select>
+                    <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
+                      <AptCoin />
+                      phAPT
+                    </Flex>
                   </Grid>
                 </GridItem>
               </Grid>
@@ -375,11 +332,6 @@ export const Split = () => {
                 <Button onClick={withdrawPhAPt}>Accept and merge</Button>
               </Flex>
             </Box>
-          </Tab>
-          <Tab title="Redeem">
-            <Text py="70px" textAlign="center" fontFamily="orbitron"
-                  fontSize="50px" opacity="0.3"
-                  fontWeight={900}>- Coming soon -</Text>
           </Tab>
         </TabList>
       </Box>

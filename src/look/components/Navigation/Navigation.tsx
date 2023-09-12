@@ -69,7 +69,6 @@ export const Navigation = () => {
         as={NextLink}
         href="/swap"
         display="flex"
-        opacity={0.4}
         alignItems="center"
         justifyContent="flex-start"
         gap="16px"

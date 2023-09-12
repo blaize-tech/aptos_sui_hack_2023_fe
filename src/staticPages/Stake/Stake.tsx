@@ -32,7 +32,7 @@ export const Stake = () => {
   const store = useStore();
 
   const aptosBalance = store.state.balances["APT"] || "0";
-  const phAPTBalance = store.state.balances["phApt"] || "0";
+  const phAPTBalance = store.state.balances["phAPT"] || "0";
 
   useEffect(() => {
     if (!!wallet.account && !!wallet.account.address)
@@ -76,9 +76,6 @@ export const Stake = () => {
           <Box>
             <Text as="h1" mb="24px">
               Stake
-            </Text>
-            <Text color="gray" fontWeight={500}>
-              Tagline Will Goes Here
             </Text>
           </Box>
           <ConnectWalletButton />
@@ -128,13 +125,12 @@ export const Stake = () => {
                         onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Flex alignItems="center" gap="28px">
+                    <Flex alignItems="center" gap="8px">
                       <AptCoin />
                       APT
                     </Flex>
                   </Flex>
                 </Box>
-                {/*< ----- >*/}
                 {/*< ----- >*/}
                 <Box
                   borderRadius="48px 48px 24px 24px"
@@ -176,7 +172,7 @@ export const Stake = () => {
                         onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
-                    <Flex alignItems="center" gap="28px">
+                    <Flex alignItems="center" gap="8px">
                       <AptCoin />
                       phAPT
                     </Flex>
@@ -205,13 +201,13 @@ export const Stake = () => {
                     mb="41px"
                 >
                   <GridItem>
-                    <Text color="gray">phApt to APT Rate</Text>
+                    <Text color="gray">phAPT to APT Rate</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>1 phApt = 1.0001 APT</Text>
+                    <Text>1 phAPT = 1.0001 APT</Text>
                   </GridItem>
                   <GridItem>
-                    <Text color="gray">phApt MCap</Text>
+                    <Text color="gray">phAPT MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
                     <Text>$5,379,388,167</Text>
@@ -271,7 +267,7 @@ export const Stake = () => {
                           onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
-                    <Flex alignItems="center" gap="28px">
+                    <Flex alignItems="center" gap="8px">
                       <AptCoin />
                       phAPT
                     </Flex>
@@ -318,7 +314,7 @@ export const Stake = () => {
                           onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
-                    <Flex alignItems="center" gap="28px">
+                    <Flex alignItems="center" gap="8px">
                       <AptCoin />
                       APT
                     </Flex>
@@ -349,13 +345,13 @@ export const Stake = () => {
                     mb="41px"
                 >
                   <GridItem>
-                    <Text color="gray">phApt to APT Rate</Text>
+                    <Text color="gray">phAPT to APT Rate</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>1 phApt = 1.0001 APT</Text>
+                    <Text>1 phAPT = 1.0001 APT</Text>
                   </GridItem>
                   <GridItem>
-                    <Text color="gray">phApt MCap</Text>
+                    <Text color="gray">phAPT MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
                     <Text>$5,379,388,167</Text>

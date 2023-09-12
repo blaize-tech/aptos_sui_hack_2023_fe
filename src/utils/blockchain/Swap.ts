@@ -31,7 +31,7 @@ class Staking {
             Fee: "0.25",
         });
         result.push({
-            AssetName: "APT/phApt",
+            AssetName: "APT/phAPT",
             Earned: "12.55",
             Liquidity: "1212.5",
             APR: "0.55",
@@ -41,7 +41,7 @@ class Staking {
             Fee: "0.15",
         });
         result.push({
-            AssetName: "phApt/pPhApt",
+            AssetName: "phAPT/pPhApt",
             Earned: "5.55",
             Liquidity: "444.5",
             APR: "2.55",
@@ -51,7 +51,7 @@ class Staking {
             Fee: "0.10",
         });
         result.push({
-            AssetName: "phApt/yPhApt",
+            AssetName: "phAPT/yPhApt",
             Earned: "5.55",
             Liquidity: "444.5",
             APR: "2.55",

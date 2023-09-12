@@ -14,9 +14,6 @@ export const Pools = () => {
             <Text as="h1" mb="24px">
               Pools
             </Text>
-            <Text color="gray" fontWeight={500}>
-              Tagline Will Goes Here
-            </Text>
           </Box>
           <ConnectWalletButton />
         </Grid>
