@@ -227,7 +227,11 @@ export const Split = () => {
               </Flex>
             </Box>
           </Tab>
-          <Tab title="Bond">Bond</Tab>
+          <Tab title="Bond">
+            <Text py="70px" textAlign="center" fontFamily="orbitron"
+                  fontSize="50px" opacity="0.3"
+                  fontWeight={900}>- Coming soon -</Text>
+          </Tab>
           <Tab title="Merge">
             <Box>
               <Text as="h3" textAlign="center" mb="48px">
@@ -372,7 +376,11 @@ export const Split = () => {
               </Flex>
             </Box>
           </Tab>
-          <Tab title="Redeem">Redeem</Tab>
+          <Tab title="Redeem">
+            <Text py="70px" textAlign="center" fontFamily="orbitron"
+                  fontSize="50px" opacity="0.3"
+                  fontWeight={900}>- Coming soon -</Text>
+          </Tab>
         </TabList>
       </Box>
     </Box>
