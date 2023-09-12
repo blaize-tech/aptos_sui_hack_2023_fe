@@ -50,6 +50,7 @@ export const Split = () => {
   const withdrawPhAPt = async () => {
     let value = withdrawAmount * Math.pow(10, 8);
     const hash = await blockChainCore.getStaking().withdrawPhApt(wallet, value);
+    console.log("|hash", hash)
     requestUpdateInfo();
   };
 
@@ -194,7 +195,134 @@ export const Split = () => {
             </Box>
           </Tab>
           <Tab title="Bond">Bond</Tab>
-          <Tab title="Merge">Merge</Tab>
+          <Tab title="Merge">
+            <Box>
+              <Text as="h3" textAlign="center" mb="48px">
+                Select Amount and Asset to Merge
+              </Text>
+              <Grid templateColumns="repeat(3, 1fr)" gap="48px" mb="150px">
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Principal Token Amount
+                  </Text>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Available: {pPhAptBalance}
+                  </Text>
+                  <Grid
+                      templateColumns="1fr auto"
+                      bgColor="blue.darkLight"
+                      borderRadius="16px"
+                      alignItems="center"
+                      mb="32px"
+                      h="64px"
+                      pl="20px"
+                  >
+                    <NumberInput defaultValue={0} precision={2} value={withdrawAmount}>
+                      <NumberInputField
+                          p={0}
+                          border={0}
+                          outline="none"
+                          h="auto"
+                          boxShadow="none"
+                          fontFamily="orbitron"
+                          fontSize="22px"
+                          fontWeight={900}
+                          placeholder="0.00"
+                          _focus={{
+                            boxShadow: 'none',
+                          }}
+                          onChange={onChaneWithdrawAmount}
+                      />
+                    </NumberInput>
+                    <Select
+                        border={0}
+                        borderRadius="16px"
+                        fontWeight={500}
+                        color="gray"
+                        w="auto"
+                        pr="10px"
+                    >
+                      <option value="option2">pPhAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Yield Token Amount
+                  </Text>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Available: {yPhAptBalance}
+                  </Text>
+                  <Grid
+                      templateColumns="1fr auto"
+                      bgColor="blue.darkLight"
+                      borderRadius="16px"
+                      alignItems="center"
+                      mb="32px"
+                      h="64px"
+                      pl="20px"
+                  >
+                    <NumberInput defaultValue={0} precision={2} value={withdrawAmount}>
+                      <NumberInputField
+                          p={0}
+                          border={0}
+                          outline="none"
+                          h="auto"
+                          boxShadow="none"
+                          fontFamily="orbitron"
+                          fontSize="22px"
+                          fontWeight={900}
+                          placeholder="0.00"
+                          _focus={{
+                            boxShadow: 'none',
+                          }}
+                          onChange={onChaneWithdrawAmount}
+                      />
+                    </NumberInput>
+                    <Select
+                        border={0}
+                        borderRadius="16px"
+                        fontWeight={500}
+                        color="gray"
+                        w="auto"
+                        pr="10px"
+                    >
+                      <option value="option3">yPhAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Available: {phAPTBalance}
+                  </Text>
+                  <Grid
+                      templateColumns="1fr auto"
+                      bgColor="blue.darkLight"
+                      borderRadius="16px"
+                      alignItems="center"
+                      mb="32px"
+                      h="64px"
+                      pl="20px"
+                  >
+                    {withdrawAmount}
+                    <Select
+                        border={0}
+                        borderRadius="16px"
+                        fontWeight={500}
+                        color="gray"
+                        w="auto"
+                        pr="10px"
+                    >
+                      <option value="option2">phAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+              </Grid>
+              <Flex justifyContent="center">
+                <Button onClick={withdrawPhAPt}>Accept and merge</Button>
+              </Flex>
+            </Box>
+          </Tab>
           <Tab title="Redeem">Redeem</Tab>
         </TabList>
       </Box>
