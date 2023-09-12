@@ -1,6 +1,7 @@
 import aptos from "@utils/blockchain/aptos";
 import "./hackaton_quick_env";
 import Staking from "@utils/blockchain/Staking";
+import Swap from "@utils/blockchain/Swap";
 import FungibleAsset from "@utils/blockchain/FungibleAsset";
 
 
@@ -8,6 +9,7 @@ class BlockChainCore {
 
     initialized: boolean;
     staking: Staking;
+    swap: Swap;
     assetsSymbols: Array<string>;
     assetsAddresses: Map<string, string>;
     assetsContracts: Array<FungibleAsset>;
@@ -43,6 +45,8 @@ class BlockChainCore {
 
         this.staking = new Staking(process.env.NEXT_STAKING_ADDRESS);
 
+        this.swap = new Swap(process.env.NEXT_SWAP_ADDRESS);
+
         this.assetsSymbols.forEach((asset) =>
             this.assetsContracts.push(new FungibleAsset(this.assetsAddresses[asset], asset)));
     }
@@ -59,6 +63,10 @@ class BlockChainCore {
 
     getStaking(): Staking {
         return this.staking;
+    }
+
+    getSwap(): Swap {
+        return this.swap;
     }
 }
 
