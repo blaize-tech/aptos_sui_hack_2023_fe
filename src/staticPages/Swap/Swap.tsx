@@ -72,7 +72,7 @@ export const Swap = () => {
     const assetsOptions = [];
     assetSymbols.forEach((symbol) => {
         assetsOptions.push(
-            <option value={symbol}>
+            <option value={symbol} key={symbol}>
                 {symbol}
             </option>
         )
