@@ -68,6 +68,10 @@ class BlockChainCore {
     getSwap(): Swap {
         return this.swap;
     }
+
+    getAssetSymbols():  Array<string> {
+        return this.assetsSymbols;
+    }
 }
 
 const blockChainCore = new BlockChainCore();

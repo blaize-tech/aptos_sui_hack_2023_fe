@@ -27,6 +27,8 @@ export const Swap = () => {
     const [symbolIn, setSymbolIn] = useState<string>("APT");
     const [symbolOut, setSymbolOut] = useState<string>("phApt");
 
+    const assetSymbols = [...blockChainCore.getAssetSymbols(), "APT"];
+
     const wallet = useWallet();
     const store = useStore();
 
@@ -59,6 +61,15 @@ export const Swap = () => {
     const onChaneSwapAmount = (val) => {
         setSwapAmountIn(val.target.value);
     };
+
+    const assetsOptions = [];
+    assetSymbols.forEach((symbol) => {
+        assetsOptions.push(
+            <option value={symbol}>
+                {symbol}
+            </option>
+        )
+    });
 
     return (
         <Box>
@@ -116,10 +127,16 @@ export const Swap = () => {
                                     onChange={onChaneSwapAmount}
                                 />
                             </NumberInput>
-                            <Flex alignItems="center" gap="28px">
-                                <AptCoin/>
-                                APT
-                            </Flex>
+                            <Select
+                                border={0}
+                                borderRadius="16px"
+                                fontWeight={500}
+                                color="gray"
+                                w="auto"
+                                pr="10px"
+                            >
+                                {assetsOptions}
+                            </Select>
                         </Flex>
                     </Box>
                     {/*< ----- >*/}
@@ -162,10 +179,16 @@ export const Swap = () => {
                                     }}
                                 />
                             </NumberInput>
-                            <Flex alignItems="center" gap="28px">
-                                <AptCoin/>
-                                phAPT
-                            </Flex>
+                            <Select
+                                border={0}
+                                borderRadius="16px"
+                                fontWeight={500}
+                                color="gray"
+                                w="auto"
+                                pr="10px"
+                            >
+                                {assetsOptions}
+                            </Select>
                         </Flex>
                     </Box>
                     <Grid
