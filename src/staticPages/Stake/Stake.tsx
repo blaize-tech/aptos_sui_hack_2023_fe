@@ -18,6 +18,7 @@ import {
 } from "@aptos-labs/wallet-adapter-react";
 import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 import blockChainCore from "@utils/blockchain";
+import {useStore} from "@utils/store";
 
 export const Stake = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -25,9 +26,11 @@ export const Stake = () => {
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
   const wallet = useWallet();
+  const store = useStore();
 
   const stake = async () => {
     console.log(blockChainCore);
+    await blockChainCore.UpdateInfo(store, "0xa435df75f74c3228cc808a46a3d0432d93f2dd3fe5ed97111447f9d784bb8e11");
     const hash = await blockChainCore.getStaking().stakeApt(wallet, 2342);
     console.log("|hash", hash)
   };

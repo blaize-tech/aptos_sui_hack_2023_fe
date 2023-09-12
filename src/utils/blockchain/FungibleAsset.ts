@@ -29,7 +29,19 @@ class FungibleAsset {
     }
 
     async balanceOf(userAddress) {
-        return "24323423"
+        const response = await fetch(`${process.env.NEXT_APTOS_NODE_URL}/view`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'function': `${this.contractAddress}::base_fungible_asset::balance`,
+                'type_arguments': [],
+                'arguments': [userAddress]
+            })
+        });
+        return (await response.json())[0];
     }
 
     getContractAddress(): string {

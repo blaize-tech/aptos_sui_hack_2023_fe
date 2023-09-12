@@ -15,6 +15,7 @@ class BlockChainCore {
     constructor() {
         this.initialized = false;
         this.assetsSymbols = new Array<string>();
+        this.assetsContracts = new Array<FungibleAsset>();
         const symbols = [
             process.env.NEXT_TOKEN_MODULE_PHAPT_SYMBOL,
             process.env.NEXT_TOKEN_MODULE_PHZ_SYMBOL,
@@ -49,6 +50,7 @@ class BlockChainCore {
     async UpdateInfo(store, userAddress: string) {
         for (const assetContract of this.assetsContracts) {
             const balance = await assetContract.balanceOf(userAddress);
+            console.log("balance", balance)
             store.dispatch({type: "update-balance", asset: assetContract.getSymbol(), balance});
         }
         const aptosBalance = await aptos.getBalance(userAddress);
