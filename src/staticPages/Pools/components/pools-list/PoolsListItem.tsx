@@ -1,7 +1,18 @@
 import { Flex, Center, Text, ListItem } from "@chakra-ui/react";
 import {AptCoin, DownIcon} from "@look/components/Icons";
+import {PoolInfo} from "@utils/blockchain/Swap";
 
-const PoolsListItem: React.FC = () => {
+const PoolsListItem: React.FC = (props: {poolInfo: poolInfo}) => {
+  const {
+    AssetName,
+    Earned,
+    Liquidity,
+    APR,
+    Multiplier,
+    Available,
+    Staked,
+    Fee
+  } = props.poolInfo;
   return (
     <ListItem
       color="#777D99"
@@ -20,7 +31,7 @@ const PoolsListItem: React.FC = () => {
             lineHeight="16.3px"
             color="#E1E6FB"
           >
-            APT
+            {AssetName}
           </Text>
           <Center
             color="#B692F6"
@@ -33,7 +44,7 @@ const PoolsListItem: React.FC = () => {
               fontSize="10px"
               lineHeight="15px"
             >
-              0.25%
+              {Fee}%
             </Text>
           </Center>
 
@@ -58,7 +69,7 @@ const PoolsListItem: React.FC = () => {
           alignItems="center"
         >
           <Text fontSize="10px" fontWeight="700">Earned</Text>
-          <Text fontSize="14px">0</Text>
+          <Text fontSize="14px">{Earned}</Text>
         </Flex>
         <Flex
           flexDirection="column"
@@ -66,7 +77,7 @@ const PoolsListItem: React.FC = () => {
           alignItems="center"
         >
           <Text fontSize="10px" fontWeight="700">Liquidity</Text>
-          <Text fontSize="14px">$6,136,811</Text>
+          <Text fontSize="14px">${Liquidity}</Text>
         </Flex>
         <Flex
           flexDirection="column"
@@ -75,7 +86,7 @@ const PoolsListItem: React.FC = () => {
         >
           <Text fontSize="10px" fontWeight="700">APR</Text>
           <Text fontSize="14px" color="#32D583">
-            53.64%
+            {APR}%
           </Text>
         </Flex>
         <Flex
@@ -84,7 +95,7 @@ const PoolsListItem: React.FC = () => {
           alignItems="center"
         >
           <Text fontSize="10px" fontWeight="700">Multiplier</Text>
-          <Text fontSize="14px">178x</Text>
+          <Text fontSize="14px">{Multiplier}</Text>
         </Flex>
         <Flex
           flexDirection="column"
@@ -92,7 +103,7 @@ const PoolsListItem: React.FC = () => {
           alignItems="center"
         >
           <Text fontSize="10px" fontWeight="700">Available</Text>
-          <Text fontSize="14px">0 LP</Text>
+          <Text fontSize="14px">{Available} LP</Text>
         </Flex>
         <Flex
           flexDirection="column"
@@ -100,7 +111,7 @@ const PoolsListItem: React.FC = () => {
           alignItems="center"
         >
           <Text fontSize="10px" fontWeight="700">Staked</Text>
-          <Text fontSize="14px">0 LP</Text>
+          <Text fontSize="14px">{Staked} LP</Text>
         </Flex>
         <Flex
           flexDirection="column"
