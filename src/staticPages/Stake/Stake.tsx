@@ -34,6 +34,7 @@ export const Stake = () => {
   const phAPTBalance = store.state.balances["phApt"] || "0";
 
   const aptPrice = 5.09;
+  const aptPrecision = Math.pow(10, 8);
 
   useEffect(() => {
     if (!!wallet.account && !!wallet.account.address)
@@ -48,7 +49,7 @@ export const Stake = () => {
   };
 
   const stakeAPt = async () => {
-    let value = stakeAmount * Math.pow(10, 8);
+    let value = stakeAmount * aptPrecision;
     console.log("value", value);
     const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
     console.log("|hash", hash)
@@ -56,7 +57,7 @@ export const Stake = () => {
   };
 
   const withdrawAPt = async () => {
-    let value = withdrawAmount * Math.pow(10, 8);
+    let value = withdrawAmount * aptPrecision;
     const hash = await blockChainCore.getStaking().withdrawApt(wallet, value);
     requestUpdateInfo();
   };
@@ -103,8 +104,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text>${aptPrice * stakeAmount}</Text>
-                    <Text>Balance: {aptosBalance/10**8}</Text>
+                    <Text >${(aptPrice * stakeAmount).toFixed(2)}</Text>
+                    <Text>Balance: {aptosBalance/aptPrecision}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -151,8 +152,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text>${aptPrice * stakeAmount}</Text>
-                    <Text>Balance: {phAPTBalance/10**8}</Text>
+                    <Text>${(aptPrice * stakeAmount).toFixed(2)}</Text>
+                    <Text>Balance: {phAPTBalance/aptPrecision}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -215,13 +216,13 @@ export const Stake = () => {
                     <Text color="gray">phApt MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>$37,190.872</Text>
+                    <Text>$5,379,388,167</Text>
                   </GridItem>
                   <GridItem>
                     <Text color="gray">APT in Vault</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>{92440.793 + phAPTBalance / 10**8}</Text>
+                    <Text>{92440.793 + phAPTBalance / aptPrecision}</Text>
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
@@ -246,8 +247,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>${aptPrice * withdrawAmount}</Text>
-                    <Text>Balance: {phAPTBalance/10**8}</Text>
+                    <Text>${(aptPrice * withdrawAmount).toFixed(2)}</Text>
+                    <Text>Balance: {phAPTBalance/aptPrecision}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
@@ -283,7 +284,7 @@ export const Stake = () => {
                     borderRadius="24px 24px 24px 24px"
                     p="32px 32px 40px"
                     bgColor="blue.darkLight"
-                    mb="2px"
+                    mb="12px"
                 >
                   <Flex
                       justifyContent="space-between"
@@ -293,8 +294,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>${aptPrice * withdrawAmount}</Text>
-                    <Text>Balance: {aptosBalance/10**8}</Text>
+                    <Text>${(aptPrice * withdrawAmount).toFixed(2)}</Text>
+                    <Text>Balance: {aptosBalance/aptPrecision}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
@@ -359,13 +360,13 @@ export const Stake = () => {
                     <Text color="gray">phApt MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>$37,190.872</Text>
+                    <Text>$5,379,388,167</Text>
                   </GridItem>
                   <GridItem>
                     <Text color="gray">APT in Vault</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>{92440.793 + phAPTBalance / 10**8}</Text>
+                    <Text>{92440.793 + phAPTBalance / aptPrecision}</Text>
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
