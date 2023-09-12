@@ -9,6 +9,7 @@ const SemiHead: React.FC = () => {
       fontFamily="Orbitron"
       fontWeight="900"
       alignItems="center"
+      h="47px"
     >
       <Box>
         <Text

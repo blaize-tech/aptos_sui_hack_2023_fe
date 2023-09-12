@@ -17,7 +17,6 @@ const Validator: React.FC = () => {
       h="64px"
       bg="rgba(29, 39, 71, 0.4)"
       borderRadius="16px"
-      p="20px"
     >
       <option value="validator1">Validator 1</option>
       <option value="validator2">Validator 2</option>

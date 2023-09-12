@@ -4,7 +4,7 @@ import BalanceContainer from "./BalanceContainre";
 
 const BalanceGroup: React.FC = () => {
   return (
-    <Box>
+    <Box h="272px">
       <BalanceContainer borderTopRadius="22px" borderBottomRadius="42px" />
       <BalanceContainer borderTopRadius="42px" borderBottomRadius="22px" />
     </Box>

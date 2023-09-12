@@ -12,7 +12,7 @@ const primaryButton = defineStyle({
   fontFamily: "Orbitron",
   fontSize: "14px",
   textTransform: "uppercase",
-  letterSpacing: "10%",
+  letterSpacing: "10",
   lineHeight: "24.08px",
 });
 
