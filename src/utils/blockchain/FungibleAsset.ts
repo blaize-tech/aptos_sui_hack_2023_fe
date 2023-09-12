@@ -39,7 +39,7 @@ class FungibleAsset {
                 'arguments': []
             })
         });
-        return (await response.json())[0];
+        return (await response.json())[0].inner;
     }
 
     getContractAddress(): string {

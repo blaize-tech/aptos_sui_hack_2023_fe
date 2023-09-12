@@ -57,6 +57,7 @@ export const Swap = () => {
         console.log("value", value);
         if (symbolIn === "APT") {
             const tokenMetadata = await blockChainCore.getMetadata(symbolOut);
+            console.log("tokenMetadata", tokenMetadata);
             const hash = await blockChainCore.getSwap().swapAssetForCoin(wallet, tokenMetadata, value);
             console.log("|hash", hash);
         }
