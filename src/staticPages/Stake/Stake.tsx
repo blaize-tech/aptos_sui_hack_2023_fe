@@ -14,7 +14,7 @@ export const Stake = () => {
       <Box as="section">
         <Grid templateColumns="1fr auto" gap="32px" alignItems="center" mb="40px">
           <Box>
-            <Text as="h1" mb="32px">
+            <Text as="h1" mb="24px">
               Stake
             </Text>
             <Text color="gray" fontWeight={500}>
@@ -30,7 +30,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 <Box
                   borderRadius="24px 24px 50px 50px"
-                  p="32px 32px 51px"
+                  p="32px 32px 40px"
                   bgColor="blue.darkLight"
                   mb="2px"
                 >
@@ -62,7 +62,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 <Box
                   borderRadius="50px 50px 24px 24px"
-                  p="51px 32px 32px"
+                  p="40px 32px 32px"
                   bgColor="blue.darkLight"
                   mb="32px"
                 >

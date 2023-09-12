@@ -11,6 +11,7 @@ const Layout = ({ children }: { children: JSX.Element }) => {
           <Box
             bgImage="/assets/images/bg_content.png"
             borderRadius="40px 0 0 40px"
+            bgPosition="right"
             bgSize="cover"
             p="80px"
           >

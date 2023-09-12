@@ -35,7 +35,10 @@ const styles = {
         mb: 0,
       },
       h2: {},
-      h3: {},
+      h3: {
+        fontFamily: 'orbitron',
+        fontSize: '22px',
+      },
       h4: {},
       select: {
         px: '20px',
