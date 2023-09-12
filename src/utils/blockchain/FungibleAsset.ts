@@ -26,6 +26,22 @@ class FungibleAsset {
         return (await response.json())[0];
     }
 
+    async getMetadata() {
+        const response = await fetch(`${process.env.NEXT_APTOS_NODE_URL}/view`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'function': `${this.contractAddress}::base_fungible_asset::get_metadata`,
+                'type_arguments': [],
+                'arguments': []
+            })
+        });
+        return (await response.json())[0];
+    }
+
     getContractAddress(): string {
         return this.contractAddress;
     }
