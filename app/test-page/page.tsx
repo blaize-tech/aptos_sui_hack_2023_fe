@@ -1,8 +1,18 @@
-'use client';
-import {useState} from "react";
+"use client";
 import Wallet from "../blockchain/wallet";
 
-const TestPage: React.FC = () => {
+const TestPage = () => {
+    const useState = (defaultValue) => {
+        let value = defaultValue;
+        return [
+            () => {
+                return value;
+            },
+            (newValue) => {
+                value = newValue;
+            }
+        ]
+    };
     const [wallet, setWallet] = useState<any>(undefined);
     const [stakeAmount, setStakeAmount] = useState("");
     const [PHZ, setBalancePHZ] = useState(0);
@@ -19,6 +29,7 @@ const TestPage: React.FC = () => {
         await w.connect();
         setWallet(w);
         await updateInfos();
+        window.alert("dsfsd")
     };
     const stake = () => {
         console.log("stake");
@@ -30,7 +41,7 @@ const TestPage: React.FC = () => {
         <div style={{width: "800px", height: "1000px", backgroundColor: "#999", position: "absolute"}}>
             <button style={{backgroundColor: "#555", margin: "10px"}} onClick={connectWallet}>connect wallet</button>
             <br/>
-            <text>address: {!!wallet ? wallet.getAccount() : "0x"}</text>
+            <text>address: {wallet && wallet.getAccount ? wallet.getAccount() : "0x"}</text>
             <br/>
             <text>balance PHZ: {PHZ}</text>
             <br/>
