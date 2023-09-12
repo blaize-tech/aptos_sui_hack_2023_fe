@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Button, Grid, Text, HStack, GridItem, Select, Flex } from "@chakra-ui/react";
+import { Box, Button, Grid, Text, HStack, GridItem, Select, Flex } from '@chakra-ui/react';
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
-import { AptCoin } from '@look/components/Icons';
+import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 
 export const Split = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -22,7 +22,7 @@ export const Split = () => {
               Tagline Will Goes Here
             </Text>
           </Box>
-          <Button>Connect Wallet</Button>
+          <ConnectWalletButton />
         </Grid>
         <HStack mb="64px">
           <Box bgColor="blue.darkLight" borderRadius="24px" p="32px 32px 28px">

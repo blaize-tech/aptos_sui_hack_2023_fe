@@ -27,6 +27,7 @@ const BaseButton = () => ({
   },
   _hover: {
     color: 'white',
+    bgColor: 'blue.btnHover',
   },
   _focus: {
     color: 'white',
