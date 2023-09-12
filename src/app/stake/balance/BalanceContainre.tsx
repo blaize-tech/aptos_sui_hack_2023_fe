@@ -7,11 +7,13 @@ import luna from "../../../../public/luna.png";
 interface BalanceContainerInterface {
   borderTopRadius: string;
   borderBottomRadius: string;
+  tokenName: string;
 }
 
 const BalanceContainer: React.FC<BalanceContainerInterface> = ({
   borderTopRadius,
   borderBottomRadius,
+  tokenName,
 }) => {
   return (
     <Flex
@@ -67,9 +69,8 @@ const BalanceContainer: React.FC<BalanceContainerInterface> = ({
             fontWeight="900"
             fontSize="22px"
             lineHeight="28px"
-            textTransform="uppercase"
           >
-            luna
+            {tokenName}
           </Text>
         </Flex>
       </Flex>
