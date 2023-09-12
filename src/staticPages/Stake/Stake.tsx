@@ -89,7 +89,7 @@ export const Stake = () => {
               <Box>
                 {/*< ----- >*/}
                 <Box
-                  borderRadius="24px 24px 24px 24px"
+                  borderRadius="24px 24px 48px 48px"
                   p="32px"
                   bgColor="blue.darkLight"
                   mb="2px"
@@ -137,7 +137,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 {/*< ----- >*/}
                 <Box
-                  borderRadius="24px 24px 24px 24px"
+                  borderRadius="48px 48px 24px 24px"
                   p="32px"
                   bgColor="blue.darkLight"
                   mb="32px"
@@ -232,7 +232,7 @@ export const Stake = () => {
             <Tab title="Redeem">
               <Box>
                 <Box
-                    borderRadius="24px 24px 24px 24px"
+                    borderRadius="24px 24px 48px 48px"
                     p="32px"
                     bgColor="blue.darkLight"
                     mb="2px"
@@ -279,7 +279,7 @@ export const Stake = () => {
                 </Box>
                 {/*< ----- >*/}
                 <Box
-                    borderRadius="24px 24px 24px 24px"
+                    borderRadius="48px 48px 24px 24px"
                     p="32px"
                     bgColor="blue.darkLight"
                     mb="32px"
