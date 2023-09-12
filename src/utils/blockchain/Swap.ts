@@ -10,11 +10,14 @@ export interface PoolInfo {
 }
 
 
-class Staking {
+class Swap {
     contractAddress: string;
+    appMetadataAddress: string;
 
     constructor(address) {
         this.contractAddress = address;
+        // APT wrapped coin address
+        this.appMetadataAddress = "0xb80640bab1799912b502206144510a5ff74aa65de181909d5efed07464818e08"
     }
 
     getPoolsInfos(): Array<PoolInfo> {
@@ -99,6 +102,31 @@ class Staking {
             return res.hash;
         });
     }
+
+    async estimateAssetForAsset(amountIn, tokenFrom, tokenTo): Promise<number> {
+        const response = await fetch(`${process.env.NEXT_APTOS_NODE_URL}/view`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'function': `${this.contractAddress}::router::get_amount_out`,
+                'type_arguments': [],
+                'arguments': [amountIn.toString(), tokenFrom, tokenTo]
+            })
+        });
+        let [out, fee] = await response.json();
+        return Number.parseInt(out);
+    }
+
+    async estimateCoinForAsset(amountIn, tokenTo): Promise<number> {
+        return this.estimateAssetForAsset(amountIn, this.appMetadataAddress, tokenTo);
+    }
+
+    async estimateAssetForCoin(amountIn, tokenFrom): Promise<number> {
+        return this.estimateAssetForAsset(amountIn, tokenFrom, this.appMetadataAddress);
+    }
 }
 
-export default Staking
+export default Swap

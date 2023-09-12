@@ -43,10 +43,36 @@ export const Swap = () => {
             blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
     }, [wallet.connected, wallet.account]);
 
+    const updateRate = async () => {
+        if (symbolIn === symbolOut) {
+            setExchangeRate(1);
+            setSwapAmountOut(swapAmountIn);
+        } else if (symbolIn === "APT") {
+            const tokenMetadata = await blockChainCore.getMetadata(symbolOut);
+            const rate = await blockChainCore.getSwap().estimateCoinForAsset(1, tokenMetadata);
+            console.log("rate", rate);
+            setExchangeRate(rate);
+            if (rate === 0)
+                setSwapAmountOut(0);
+            else
+                setSwapAmountOut(swapAmountIn / rate);
+        } else {
+            const tokenMetadata = await blockChainCore.getMetadata(symbolIn);
+            const rate = await blockChainCore.getSwap().estimateAssetForCoin(1, tokenMetadata);
+            console.log("rate", rate);
+            setExchangeRate(rate);
+            if (rate === 0)
+                setSwapAmountOut(0);
+            else
+                setSwapAmountOut(swapAmountIn / rate);
+        }
+    };
+
     const requestUpdateInfo = () => {
         setTimeout(() => {
             if (!!wallet.account && !!wallet.account.address)
                 blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
+            updateRate().catch(console.error);
         }, 3000)
     };
 
@@ -71,13 +97,16 @@ export const Swap = () => {
 
     const onChaneSwapAmount = (val) => {
         setSwapAmountIn(val.target.value);
+        updateRate().catch(console.error);
     };
 
     const handleChangeSymbolIn = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSymbolIn(event.target.value)
+        setSymbolIn(event.target.value);
+        updateRate().catch(console.error);
     };
     const handleChangeSymbolOut = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSymbolOut(event.target.value)
+        setSymbolOut(event.target.value);
+        updateRate().catch(console.error);
     };
 
     const assetsOptions = [];
