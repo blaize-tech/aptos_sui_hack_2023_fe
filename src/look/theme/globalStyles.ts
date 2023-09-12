@@ -38,6 +38,7 @@ const styles = {
       h3: {
         fontFamily: 'orbitron',
         fontSize: '22px',
+        fontWeight: '900',
       },
       h4: {},
       select: {
