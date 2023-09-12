@@ -2,7 +2,8 @@ import { Flex, Center, Text, ListItem } from "@chakra-ui/react";
 import {AptCoin, DownIcon} from "@look/components/Icons";
 import {PoolInfo} from "@utils/blockchain/Swap";
 
-const PoolsListItem: React.FC = (props: {poolInfo: poolInfo}) => {
+const PoolsListItem: React.FC = (props: {// @ts-ignore
+  poolInfo: poolInfo}) => {
   const {
     AssetName,
     Earned,

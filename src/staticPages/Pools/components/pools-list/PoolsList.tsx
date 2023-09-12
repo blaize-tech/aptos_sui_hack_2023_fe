@@ -9,6 +9,7 @@ const PoolsList: React.FC = () => {
     //
     const poolItems = [];
     poolsList.forEach(poolInfo => {
+        // @ts-ignore
         poolItems.push(<PoolsListItem key={poolInfo.AssetName} poolInfo={poolInfo}/>)
     });
     return (
