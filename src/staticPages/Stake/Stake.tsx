@@ -204,13 +204,13 @@ export const Stake = () => {
                   mb="41px"
                 >
                   <GridItem>
-                    <Text color="gray">cAPT to APT Rate</Text>
+                    <Text color="gray">phApt to APT Rate</Text>
                   </GridItem>
                   <GridItem textAlign="right">
                     <Text>1 USDT = 1.121 APT</Text>
                   </GridItem>
                   <GridItem>
-                    <Text color="gray">cAPT MCap</Text>
+                    <Text color="gray">phApt MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
                     <Text>$5,361,554,704</Text>
@@ -348,13 +348,13 @@ export const Stake = () => {
                     mb="41px"
                 >
                   <GridItem>
-                    <Text color="gray">cAPT to APT Rate</Text>
+                    <Text color="gray">phApt to APT Rate</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>1 USDT = 1.121 APT</Text>
+                    <Text>1 phApt = 1.0001 APT</Text>
                   </GridItem>
                   <GridItem>
-                    <Text color="gray">cAPT MCap</Text>
+                    <Text color="gray">phApt MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
                     <Text>$37,190.872</Text>
