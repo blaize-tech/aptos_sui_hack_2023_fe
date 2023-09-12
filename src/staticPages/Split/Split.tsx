@@ -12,6 +12,7 @@ import blockChainCore from "@utils/blockchain";
 import {
   useWallet,
 } from "@aptos-labs/wallet-adapter-react";
+import { PRECISION, toDisplayValue } from '@utils/blockchain/aptos';
 
 export const Split = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -83,7 +84,7 @@ export const Split = () => {
               Total APT in Vault
             </Text>
             <Text fontFamily="orbitron" fontSize="22px" fontWeight={900}>
-              0 APT
+              {92440.793 + phAPTBalance / PRECISION} APT
             </Text>
           </Box>
         </HStack>
@@ -96,7 +97,7 @@ export const Split = () => {
               <Grid templateColumns="repeat(3, 1fr)" gap="48px" mb="150px">
                 <GridItem>
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Available: {phAPTBalance}
+                    Available: {toDisplayValue(phAPTBalance)}
                   </Text>
                   <Grid
                     templateColumns="1fr auto"
@@ -206,7 +207,7 @@ export const Split = () => {
                   {/*  Principal Token Amount*/}
                   {/*</Text>*/}
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Available: {pPhAptBalance}
+                    Available: {toDisplayValue(pPhAptBalance)}
                   </Text>
                   <Grid
                       templateColumns="1fr auto"
@@ -251,7 +252,7 @@ export const Split = () => {
                   {/*  Yield Token Amount*/}
                   {/*</Text>*/}
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Available: {yPhAptBalance}
+                    Available: {toDisplayValue(yPhAptBalance)}
                   </Text>
                   <Grid
                       templateColumns="1fr auto"
@@ -293,7 +294,7 @@ export const Split = () => {
                 </GridItem>
                 <GridItem>
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Available: {phAPTBalance}
+                    Phizen Token Amount
                   </Text>
                   <Grid
                       templateColumns="1fr auto"

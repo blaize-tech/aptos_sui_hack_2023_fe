@@ -18,6 +18,7 @@ import {
 } from "@aptos-labs/wallet-adapter-react";
 import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 import blockChainCore from "@utils/blockchain";
+import { PRECISION, PRICE } from '@utils/blockchain/aptos';
 import {useStore} from "@utils/store";
 
 export const Stake = () => {
@@ -33,9 +34,6 @@ export const Stake = () => {
   const aptosBalance = store.state.balances["APT"] || "0";
   const phAPTBalance = store.state.balances["phApt"] || "0";
 
-  const aptPrice = 5.09;
-  const aptPrecision = Math.pow(10, 8);
-
   useEffect(() => {
     if (!!wallet.account && !!wallet.account.address)
       blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
@@ -49,7 +47,7 @@ export const Stake = () => {
   };
 
   const stakeAPt = async () => {
-    let value = stakeAmount * aptPrecision;
+    let value = stakeAmount * PRECISION;
     console.log("value", value);
     const hash = await blockChainCore.getStaking().stakeApt(wallet, value);
     console.log("|hash", hash)
@@ -57,7 +55,7 @@ export const Stake = () => {
   };
 
   const withdrawAPt = async () => {
-    let value = withdrawAmount * aptPrecision;
+    let value = withdrawAmount * PRECISION;
     const hash = await blockChainCore.getStaking().withdrawApt(wallet, value);
     requestUpdateInfo();
   };
@@ -104,8 +102,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text >${(aptPrice * stakeAmount).toFixed(2)}</Text>
-                    <Text>Balance: {aptosBalance/aptPrecision}</Text>
+                    <Text >${(PRICE * stakeAmount).toFixed(2)}</Text>
+                    <Text>Balance: {aptosBalance/PRECISION}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -152,8 +150,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text>${(aptPrice * stakeAmount).toFixed(2)}</Text>
-                    <Text>Balance: {phAPTBalance/aptPrecision}</Text>
+                    <Text>${(PRICE * stakeAmount).toFixed(2)}</Text>
+                    <Text>Balance: {phAPTBalance/PRECISION}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -222,7 +220,7 @@ export const Stake = () => {
                     <Text color="gray">APT in Vault</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>{92440.793 + phAPTBalance / aptPrecision}</Text>
+                    <Text>{92440.793 + phAPTBalance / PRECISION}</Text>
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
@@ -247,8 +245,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>${(aptPrice * withdrawAmount).toFixed(2)}</Text>
-                    <Text>Balance: {phAPTBalance/aptPrecision}</Text>
+                    <Text>${(PRICE * withdrawAmount).toFixed(2)}</Text>
+                    <Text>Balance: {phAPTBalance/PRECISION}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
@@ -294,8 +292,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>${(aptPrice * withdrawAmount).toFixed(2)}</Text>
-                    <Text>Balance: {aptosBalance/aptPrecision}</Text>
+                    <Text>${(PRICE * withdrawAmount).toFixed(2)}</Text>
+                    <Text>Balance: {aptosBalance/PRECISION}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
@@ -366,7 +364,7 @@ export const Stake = () => {
                     <Text color="gray">APT in Vault</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>{92440.793 + phAPTBalance / aptPrecision}</Text>
+                    <Text>{92440.793 + phAPTBalance / PRECISION}</Text>
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
