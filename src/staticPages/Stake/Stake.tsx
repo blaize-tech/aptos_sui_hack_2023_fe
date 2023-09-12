@@ -24,9 +24,12 @@ export const Stake = () => {
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
+  const wallet = useWallet();
+
   const stake = async () => {
     console.log(blockChainCore);
-    await blockChainCore.getStaking().stakeApt(2342);
+    const hash = await blockChainCore.getStaking().stakeApt(wallet, 2342);
+    console.log("|hash", hash)
   };
 
   return (
