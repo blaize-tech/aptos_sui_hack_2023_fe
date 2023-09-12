@@ -1,7 +1,12 @@
 "use client";
 import { Text, Flex } from "@chakra-ui/react";
 
-const RateListItem: React.FC = () => {
+interface RateItemInterface {
+  text: string;
+  info: string;
+}
+
+const RateListItem: React.FC<RateItemInterface> = ({ text, info }) => {
   return (
     <Flex justifyContent="space-between">
       <Text
@@ -11,7 +16,7 @@ const RateListItem: React.FC = () => {
         fontWeight="700"
         lineHeight="28px"
       >
-        cluna to luna Rate
+        {text}
       </Text>
       <Text
         color="#FFFFFF"
@@ -20,7 +25,7 @@ const RateListItem: React.FC = () => {
         fontWeight="700"
         lineHeight="28px"
       >
-        1usd = 1.21atp
+        {info}
       </Text>
     </Flex>
   );

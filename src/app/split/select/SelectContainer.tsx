@@ -17,9 +17,9 @@ const SelectContainer: React.FC = () => {
         </Text>
       </Center>
       <Flex justifyContent="space-between" mt="48px">
-        <SelectComponnent />
-        <SelectComponnent />
-        <SelectComponnent />
+        <SelectComponnent head="Available: 0" />
+        <SelectComponnent head="Principal Token Amount" />
+        <SelectComponnent head="Yield Token Amount" />
       </Flex>
     </Flex>
   );

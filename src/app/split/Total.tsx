@@ -1,6 +1,5 @@
 "use client";
-import { Text, Center, Flex } from "@chakra-ui/react";
-import "../fonts.css";
+import { Text, Flex } from "@chakra-ui/react";
 const Total: React.FC = () => {
   return (
     <Flex w="1080px" h="114px" justifyContent="start">

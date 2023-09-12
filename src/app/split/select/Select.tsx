@@ -1,11 +1,15 @@
 "use client";
 
 import { Flex, Text, Select } from "@chakra-ui/react";
-import { MenyIcon, StarIcon } from "@/app/icons/icons";
+import { MenyIcon } from "@/app/icons/icons";
 import Image from "next/image";
 import luna from "../../../../public/luna.png";
 
-const SelectComponnent: React.FC = () => {
+interface SelectInterface {
+  head: string;
+}
+
+const SelectComponnent: React.FC<SelectInterface> = ({ head }) => {
   return (
     <Flex
       w="328px"
@@ -21,7 +25,7 @@ const SelectComponnent: React.FC = () => {
         letterSpacing="3%"
         color="#777D99"
       >
-        Available: 0
+        {head}
       </Text>
       <Flex
         justifyContent="space-between"
@@ -60,7 +64,7 @@ const SelectComponnent: React.FC = () => {
           textAlign="center"
         >
           <option value="option1">pLUNA</option>
-          <option value="option2">TLUNA</option>
+          <option value="option2">yLUNA</option>
         </Select>
       </Flex>
     </Flex>

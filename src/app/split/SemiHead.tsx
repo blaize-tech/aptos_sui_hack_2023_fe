@@ -1,5 +1,5 @@
 "use client";
-import { Text, Center, Flex, Box, Button } from "@chakra-ui/react";
+import { Text, Center, Flex, Box } from "@chakra-ui/react";
 import { StarIcon } from "../icons/icons";
 const SemiHead: React.FC = () => {
   return (

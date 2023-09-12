@@ -8,7 +8,6 @@ import {
   UnorderedList,
   ListItem,
   Spacer,
-  Icon,
 } from "@chakra-ui/react";
 
 import {
@@ -32,7 +31,6 @@ import logo from "../../../public/asset/svg/logo.svg";
 import Link from "next/link";
 import Image from "next/image";
 
-import "../fonts.css";
 interface SideBarInterface {
   currentPage: string;
 }

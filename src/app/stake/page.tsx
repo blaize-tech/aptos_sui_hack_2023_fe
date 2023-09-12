@@ -1,7 +1,7 @@
 "use client";
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
-import { Text, Center, Flex, Box, Button } from "@chakra-ui/react";
+import { Text, Center, Flex, Button } from "@chakra-ui/react";
 import BalanceGroup from "./balance/BalanceGroup";
 import Validator from "./Validator";
 import RateList from "./Rate/RateList";
