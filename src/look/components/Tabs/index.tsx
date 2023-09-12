@@ -19,7 +19,7 @@ export const Tab: FC<TabProps> = ({ title, children }) => <Box data-title={title
 export const TabList: FC<TabsProps> = ({ active, onChange, children }) => {
   return (
     <Box>
-      <Flex justifyContent="center" alignItems="center" mb="40px">
+      <Flex justifyContent="center" alignItems="center" mb="30px">
         <HStack
           divider={
             <Flex alignItems="center" justifyContent="center" px="28px" border={0}>
