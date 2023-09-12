@@ -23,12 +23,15 @@ import {useStore} from "@utils/store";
 export const Swap = () => {
     const [swapAmountIn, setSwapAmountIn] = useState<number>(0);
     const [swapAmountOut, setSwapAmountOut] = useState<number>(0);
+    const [exchangeRate, setExchangeRate] = useState<number>(1);
+    const [symbolIn, setSymbolIn] = useState<string>("APT");
+    const [symbolOut, setSymbolOut] = useState<string>("phApt");
 
     const wallet = useWallet();
     const store = useStore();
 
-    const aptosBalance = store.state.balances["APT"] || "0";
-    const phAPTBalance = store.state.balances["phApt"] || "0";
+    const balanceIn = store.state.balances[symbolIn] || "0";
+    const balanceOut = store.state.balances[symbolOut] || "0";
 
     const aptPrice = 5.09;
     const aptPrecision = Math.pow(10, 8);
@@ -88,7 +91,7 @@ export const Swap = () => {
                             color="gray"
                         >
                             <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
-                            <Text>Balance: {aptosBalance / aptPrecision}</Text>
+                            <Text>Balance: {balanceIn / aptPrecision}</Text>
                         </Flex>
                         <Flex
                             justifyContent="space-between"
@@ -120,7 +123,6 @@ export const Swap = () => {
                         </Flex>
                     </Box>
                     {/*< ----- >*/}
-                    {/*< ----- >*/}
                     <Box
                         borderRadius="24px 24px 24px 24px"
                         p="32px"
@@ -136,7 +138,7 @@ export const Swap = () => {
                             color="gray"
                         >
                             <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
-                            <Text>Balance: {phAPTBalance / aptPrecision}</Text>
+                            <Text>Balance: {balanceOut / aptPrecision}</Text>
                         </Flex>
                         <Flex
                             justifyContent="space-between"
@@ -174,10 +176,10 @@ export const Swap = () => {
                         mb="41px"
                     >
                         <GridItem>
-                            <Text color="gray">phApt to APT Rate</Text>
+                            <Text color="gray">{symbolIn} to {symbolOut} Rate</Text>
                         </GridItem>
                         <GridItem textAlign="right">
-                            <Text>1 phApt = 1.0001 APT</Text>
+                            <Text>1 {symbolIn} = {exchangeRate} {symbolOut}</Text>
                         </GridItem>
                     </Grid>
                     <Flex justifyContent="center">
