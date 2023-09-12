@@ -88,7 +88,7 @@ export const Stake = () => {
               <Box>
                 {/*< ----- >*/}
                 <Box
-                  borderRadius="24px 24px 50px 50px"
+                  borderRadius="24px 24px 24px 24px"
                   p="32px 32px 40px"
                   bgColor="blue.darkLight"
                   mb="2px"
@@ -101,8 +101,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text>$0</Text>
-                    <Text>Balance: {aptosBalance}</Text>
+                    <Text>$5.09</Text>
+                    <Text>Balance: {aptosBalance/10**8}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -136,7 +136,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 {/*< ----- >*/}
                 <Box
-                  borderRadius="50px 50px 24px 24px"
+                  borderRadius="24px 24px 24px 24px"
                   p="40px 32px 32px"
                   bgColor="blue.darkLight"
                   mb="32px"
@@ -149,8 +149,8 @@ export const Stake = () => {
                     mb="12px"
                     color="gray"
                   >
-                    <Text>$0</Text>
-                    <Text>Balance: {phAPTBalance}</Text>
+                    <Text>$5.09</Text>
+                    <Text>Balance: {phAPTBalance/10**8}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -213,13 +213,13 @@ export const Stake = () => {
                     <Text color="gray">cAPT MCap</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>$37,190.872</Text>
+                    <Text>$5,361,554,704</Text>
                   </GridItem>
                   <GridItem>
                     <Text color="gray">APT in Vault</Text>
                   </GridItem>
                   <GridItem textAlign="right">
-                    <Text>$92,440.793</Text>
+                    <Text>{92440.793 + phAPTBalance / 10**8}</Text>
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
@@ -231,7 +231,7 @@ export const Stake = () => {
             <Tab title="Redeem">
               <Box>
                 <Box
-                    borderRadius="50px 50px 24px 24px"
+                    borderRadius="24px 24px 24px 24px"
                     p="40px 32px 32px"
                     bgColor="blue.darkLight"
                     mb="32px"
@@ -244,8 +244,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>$0</Text>
-                    <Text>Balance: {phAPTBalance}</Text>
+                    <Text>$5.09</Text>
+                    <Text>Balance: {phAPTBalance/10**8}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
@@ -278,7 +278,7 @@ export const Stake = () => {
                 </Box>
                 {/*< ----- >*/}
                 <Box
-                    borderRadius="24px 24px 50px 50px"
+                    borderRadius="24px 24px 24px 24px"
                     p="32px 32px 40px"
                     bgColor="blue.darkLight"
                     mb="2px"
@@ -291,8 +291,8 @@ export const Stake = () => {
                       mb="12px"
                       color="gray"
                   >
-                    <Text>$0</Text>
-                    <Text>Balance: {aptosBalance}</Text>
+                    <Text>$5.09</Text>
+                    <Text>Balance: {aptosBalance/10**8}</Text>
                   </Flex>
                   <Flex
                       justifyContent="space-between"
