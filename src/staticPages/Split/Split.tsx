@@ -132,7 +132,102 @@ export const Split = () => {
             </Box>
           </Tab>
           <Tab title="Bond">Bond</Tab>
-          <Tab title="Merge">Merge</Tab>
+          <Tab title="Merge">
+            <Box>
+              <Text as="h3" textAlign="center" mb="48px">
+                Select Amount and Asset to Split
+              </Text>
+              <Grid templateColumns="repeat(3, 1fr)" gap="48px" mb="150px">
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Available: 0
+                  </Text>
+                  <Grid
+                    templateColumns="1fr auto"
+                    bgColor="blue.darkLight"
+                    borderRadius="16px"
+                    alignItems="center"
+                    mb="32px"
+                    h="64px"
+                    pl="20px"
+                  >
+                    0.00
+                    <Select
+                      border={0}
+                      borderRadius="16px"
+                      fontWeight={500}
+                      color="gray"
+                      w="auto"
+                      pr="10px"
+                    >
+                      <option value="option1">APT</option>
+                      <option value="option2">phAPT</option>
+                      <option value="option3">yphAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Principal Token Amount
+                  </Text>
+                  <Grid
+                    templateColumns="1fr auto"
+                    bgColor="blue.darkLight"
+                    borderRadius="16px"
+                    alignItems="center"
+                    mb="32px"
+                    h="64px"
+                    pl="20px"
+                  >
+                    0.00
+                    <Select
+                      border={0}
+                      borderRadius="16px"
+                      fontWeight={500}
+                      color="gray"
+                      w="auto"
+                      pr="10px"
+                    >
+                      <option value="option1">APT</option>
+                      <option value="option2">phAPT</option>
+                      <option value="option3">yphAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+                <GridItem>
+                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
+                    Yield Token Amount
+                  </Text>
+                  <Grid
+                    templateColumns="1fr auto"
+                    bgColor="blue.darkLight"
+                    borderRadius="16px"
+                    alignItems="center"
+                    mb="32px"
+                    h="64px"
+                    pl="20px"
+                  >
+                    0.00
+                    <Select
+                      border={0}
+                      borderRadius="16px"
+                      fontWeight={500}
+                      color="gray"
+                      w="auto"
+                      pr="10px"
+                    >
+                      <option value="option1">APT</option>
+                      <option value="option2">phAPT</option>
+                      <option value="option3">yphAPT</option>
+                    </Select>
+                  </Grid>
+                </GridItem>
+              </Grid>
+              <Flex justifyContent="center">
+                <Button>Accept and Split</Button>
+              </Flex>
+            </Box>
+          </Tab>
           <Tab title="Redeem">Redeem</Tab>
         </TabList>
       </Box>
