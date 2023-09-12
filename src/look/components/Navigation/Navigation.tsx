@@ -18,13 +18,12 @@ export const Navigation = () => {
     <VStack as={'nav'} spacing="48px" justifyContent="flex-start" fontSize="12px">
       <Link
         as={NextLink}
-        href=""
+        href="/"
         display="flex"
         alignItems="center"
         justifyContent="flex-start"
         gap="16px"
         opacity={0.4}
-        cursor="not-allowed"
         color={router.pathname === "/" ? "white" : "gray"}
       >
         <Dashboard />
@@ -68,10 +67,9 @@ export const Navigation = () => {
       </Link>
       <Link
         as={NextLink}
-        href=""
+        href="/swap"
         display="flex"
         opacity={0.4}
-        cursor="not-allowed"
         alignItems="center"
         justifyContent="flex-start"
         gap="16px"
@@ -82,10 +80,9 @@ export const Navigation = () => {
       </Link>
       <Link
         as={NextLink}
-        href=""
+        href="/governance"
         display="flex"
         opacity={0.4}
-        cursor="not-allowed"
         alignItems="center"
         justifyContent="flex-start"
         gap="16px"
@@ -96,10 +93,9 @@ export const Navigation = () => {
       </Link>
       <Link
         as={NextLink}
-        href=""
+        href="/analytics"
         display="flex"
         opacity={0.4}
-        cursor="not-allowed"
         alignItems="center"
         justifyContent="flex-start"
         gap="16px"
