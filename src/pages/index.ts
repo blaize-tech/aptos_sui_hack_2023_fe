@@ -1,3 +1,3 @@
-import Home from '../home';
+import { Dashboard } from '../staticPages/Dashboard';
 
-export default Home;
+export default Dashboard;

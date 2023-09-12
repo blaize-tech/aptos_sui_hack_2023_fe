@@ -1,7 +1,7 @@
 const BaseButton = () => ({
+  fontFamily: 'orbitron',
   padding: '12px 32px',
   margin: 0,
-  width: '100%',
   fontWeight: 900,
   textAlign: 'center',
   borderRadius: '8px',
@@ -18,6 +18,9 @@ const BaseButton = () => ({
   fontSize: '14px',
   position: 'relative',
   color: 'white',
+  bgColor: 'blue.btn',
+  h: '48px',
+  letterSpacing: '1.4px',
   zIndex: 1,
   _active: {
     color: 'white',
@@ -69,7 +72,6 @@ const ButtonPrimary = () => ({
     boxShadow: '0 10px 20px rgba(255, 152, 5, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
   },
 });
-
 
 const variants = {
   base: BaseButton,

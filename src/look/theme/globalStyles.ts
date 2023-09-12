@@ -26,6 +26,23 @@ const styles = {
         fontFamily: 'poppins',
         fontDisplay: 'fallback',
       },
+      h1: {
+        fontFamily: 'orbitron',
+        fontSize: '89px',
+        lineHeight: '89px',
+        fontWeight: '700',
+        letterSpacing: '-2.67px',
+        mb: 0,
+      },
+      h2: {},
+      h3: {},
+      h4: {},
+      select: {
+        px: '20px',
+      },
+      '.chakra-select__icon-wrapper': {
+        right: '20px !important',
+      },
     }),
   },
 };

@@ -3,7 +3,7 @@ import { Colors } from '@chakra-ui/react';
 const colors: Colors = {
   black: '#000',
   white: '#E1E6FB',
-  gray: '#8A95A7',
+  gray: '#777D99',
   gradient: {
     60: 'radial-gradient(150% 100% at 50% 0%, #6A728D 0%, #212943 100%)',
   },
