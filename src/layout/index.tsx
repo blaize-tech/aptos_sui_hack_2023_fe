@@ -17,9 +17,12 @@ import { RiseWallet } from "@rise-wallet/wallet-adapter";
 import { TokenPocketWallet } from "@tp-lab/aptos-wallet-adapter";
 import { TrustWallet } from "@trustwallet/aptos-wallet-adapter";
 import { WelldoneWallet } from "@welldone-studio/aptos-wallet-adapter";
+import {InitAptos} from "@utils/blockchain";
 
 
 const Layout = ({ children }: { children: JSX.Element }) => {
+
+    InitAptos();
 
     const wallets = [
         new FewchaWallet(),

@@ -1,5 +1,4 @@
 import {AptosClient} from "aptos";
-import fetch from "./api";
 
 
 class Aptos {
@@ -37,7 +36,7 @@ class Aptos {
                     resolve,
                     url
                 } = this.pullEventsQueue.pop();
-                resolve(await fetch(url));
+                // resolve(await fetch(url));
             }
             setTimeout(pool, 1500);
         }
