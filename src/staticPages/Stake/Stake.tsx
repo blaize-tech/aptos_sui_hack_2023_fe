@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Text,
@@ -28,11 +28,19 @@ export const Stake = () => {
   const wallet = useWallet();
   const store = useStore();
 
+  const aptosBalance = store.state.balances["APT"] || "0";
+  const phAPTBalance = store.state.balances["phApt"] || "0";
+
+  useEffect(() => {
+    if (!!wallet.account && !!wallet.account.address)
+      blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
+  }, [wallet.connected, wallet.account]);
+
   const stake = async () => {
-    console.log(blockChainCore);
-    await blockChainCore.UpdateInfo(store, "0xa435df75f74c3228cc808a46a3d0432d93f2dd3fe5ed97111447f9d784bb8e11");
     const hash = await blockChainCore.getStaking().stakeApt(wallet, 2342);
     console.log("|hash", hash)
+    if (!!wallet.account && !!wallet.account.address)
+      blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
   };
 
   return (
@@ -70,7 +78,7 @@ export const Stake = () => {
                     color="gray"
                   >
                     <Text>$0</Text>
-                    <Text>Balance: 0</Text>
+                    <Text>Balance: {aptosBalance}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -117,7 +125,7 @@ export const Stake = () => {
                     color="gray"
                   >
                     <Text>$0</Text>
-                    <Text>Balance: 0</Text>
+                    <Text>Balance: {phAPTBalance}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"

@@ -50,7 +50,7 @@ class BlockChainCore {
     async UpdateInfo(store, userAddress: string) {
         for (const assetContract of this.assetsContracts) {
             const balance = await assetContract.balanceOf(userAddress);
-            console.log("balance", balance)
+            console.log("balance", assetContract.getSymbol(), balance);
             store.dispatch({type: "update-balance", asset: assetContract.getSymbol(), balance});
         }
         const aptosBalance = await aptos.getBalance(userAddress);
