@@ -46,7 +46,7 @@ const SelectComponnent: React.FC = () => {
         <Image src={luna} width={24} height={24} alt="luna" />
 
         <Select
-          placeholder="Luna"
+          placeholder="LUNA"
           variant="unstyled"
           icon={<MenyIcon />}
           w="96px"
@@ -59,8 +59,8 @@ const SelectComponnent: React.FC = () => {
           lineHeight="24px"
           textAlign="center"
         >
-          <option value="option1">pLuna</option>
-          <option value="option2">TLuna</option>
+          <option value="option1">pLUNA</option>
+          <option value="option2">TLUNA</option>
         </Select>
       </Flex>
     </Flex>

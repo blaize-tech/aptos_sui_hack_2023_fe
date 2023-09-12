@@ -5,31 +5,26 @@ import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { extendTheme } from "@chakra-ui/react";
-import { buttonTheme, tableHead, textConfig } from "./theme/themes";
+import { buttonTheme, textConfig } from "./theme/themes";
+import a from "../../public/asset/svg/bg.svg";
+import b from "../img/mask-group.png";
 
 export const theme = extendTheme({
   components: {
     Button: buttonTheme,
-    Text: { textConfig, tableHead },
-    // variants: {
-    //   tableHead,
-    //   tableText
-    //   // tableHead: {
-    //   //   fontFamily: "Poppins",
-    //   //   fontWeight: "700",
-    //   //   fontSize: "10px",
-    //   //   lineHeight: "15px",
-    //   //   color: "#777D99",
-    //   //   opacity: "100%",
-    //   // },
-    //   // tableText: {
-    //   //   fontFamily: "Poppins",
-    //   //   fontWeight: "400",
-    //   //   fontSize: "14px",
-    //   //   lineHeight: "21px",
-    //   //   color: "#777D99",
-    //   // },
-    // },
+    Text: textConfig,
+  },
+  styles: {
+    global: {
+      "html, body": {
+        bgColor: "#0c1229",
+      },
+      section: {
+        bgImage: "url('../../public/asset/svg/bg.svg')",
+        bgPosition: "center",
+        bgRepeat: "no-repeat",
+      },
+    },
   },
 });
 

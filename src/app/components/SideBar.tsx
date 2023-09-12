@@ -8,6 +8,7 @@ import {
   UnorderedList,
   ListItem,
   Spacer,
+  Icon,
 } from "@chakra-ui/react";
 
 import {
@@ -16,21 +17,27 @@ import {
   DiscordIcon,
   GitHubIcon,
   Dashbord,
-  Stake,
-  Split,
-  Pools,
+  StakeIconActive,
+  StakeIcon,
+  SplitIcon,
+  SplitIconActive,
+  PoolsIcon,
+  PoolsIconActive,
   Swap,
   Cover,
   Analytics,
 } from "../icons/icons";
-import logo from "../../../public/logo.svg";
+import logo from "../../../public/asset/svg/logo.svg";
 
 import Link from "next/link";
 import Image from "next/image";
 
 import "../fonts.css";
+interface SideBarInterface {
+  currentPage: string;
+}
 
-const SideBar = () => {
+const SideBar: React.FC<SideBarInterface> = ({ currentPage }) => {
   return (
     <Flex
       h="1024px"
@@ -64,6 +71,7 @@ const SideBar = () => {
           fontFamily="Poppins"
           h="456px"
           w="120px"
+          m="0"
         >
           <ListItem>
             <Link href="/">
@@ -76,8 +84,11 @@ const SideBar = () => {
           <ListItem color="#E1E6FB">
             <Link href="/stake">
               <Flex alignItems="center">
-                <Stake />
-                <Text ml="16px" lineHeight="24px">
+                {currentPage === "stake" ? <StakeIconActive /> : <StakeIcon />}
+                <Text
+                  ml="16px"
+                  color={currentPage === "stake" ? "#E1E6FB" : "#777D99"}
+                >
                   Stake
                 </Text>
               </Flex>
@@ -86,17 +97,26 @@ const SideBar = () => {
           <ListItem>
             <Link href="/split">
               <Flex alignItems="center">
-                <Split />
-
-                <Text ml="16px">Split</Text>
+                {currentPage === "split" ? <SplitIconActive /> : <SplitIcon />}
+                <Text
+                  ml="16px"
+                  color={currentPage === "split" ? "#E1E6FB" : "#777D99"}
+                >
+                  Split
+                </Text>
               </Flex>
             </Link>
           </ListItem>
           <ListItem>
             <Link href="/pools">
               <Flex alignItems="center">
-                <Pools />
-                <Text ml="16px">Pools</Text>
+                {currentPage === "pools" ? <PoolsIconActive /> : <PoolsIcon />}
+                <Text
+                  ml="16px"
+                  color={currentPage === "pools" ? "#E1E6FB" : "#777D99"}
+                >
+                  Pools
+                </Text>
               </Flex>
             </Link>
           </ListItem>

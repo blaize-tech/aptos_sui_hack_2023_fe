@@ -9,7 +9,7 @@ import SelectContainer from "./select/SelectContainer";
 const Split: React.FC = () => {
   return (
     <Flex as="main" justifyContent="flex-end" w="100%" h="1024px">
-      <SideBar />
+      <SideBar currentPage="split" />
       <Flex
         as="section"
         flexDirection="column"

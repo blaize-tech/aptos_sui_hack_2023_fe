@@ -61,24 +61,24 @@ const PoolsListItem: React.FC = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">Earned</Text>
-          <Text variant="tableText">0</Text>
+          <Text variant="ListHeadingText">Earned</Text>
+          <Text variant="ListText">0</Text>
         </Flex>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">Liquidity</Text>
-          <Text variant="tableText">$6,136,811</Text>
+          <Text variant="ListHeadingText">Liquidity</Text>
+          <Text variant="ListText">$6,136,811</Text>
         </Flex>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">APR</Text>
-          <Text variant="tableText" color="#32D583">
+          <Text variant="ListHeadingText">APR</Text>
+          <Text variant="ListText" color="#32D583">
             53.64%
           </Text>
         </Flex>
@@ -87,24 +87,24 @@ const PoolsListItem: React.FC = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">Multiplier</Text>
-          <Text variant="tableText">178x</Text>
+          <Text variant="ListHeadingText">Multiplier</Text>
+          <Text variant="ListText">178x</Text>
         </Flex>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">Available</Text>
-          <Text variant="tableText">0 LP</Text>
+          <Text variant="ListHeadingText">Available</Text>
+          <Text variant="ListText">0 LP</Text>
         </Flex>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <Text variant="tableHead">Staked</Text>
-          <Text variant="tableText">0 LP</Text>
+          <Text variant="ListHeadingText">Staked</Text>
+          <Text variant="ListText">0 LP</Text>
         </Flex>
         <Flex
           flexDirection="column"

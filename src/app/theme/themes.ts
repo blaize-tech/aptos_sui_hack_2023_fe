@@ -16,29 +16,26 @@ const primaryButton = defineStyle({
   lineHeight: "24.08px",
 });
 
-const tableDHead = defineStyle({
+const ListHeadingText = defineStyle({
   fontFamily: "Poppins",
   fontWeight: "700",
   fontSize: "10px",
   lineHeight: "15px",
-  color: "red",
+  color: "#777D99",
 });
 
-const tableText = defineStyle({
+const ListText = defineStyle({
   fontFamily: "Poppins",
   fontWeight: "400",
   fontSize: "14px",
   lineHeight: "21px",
-  color: "red",
+  color: "#777D99",
 });
 
 export const buttonTheme = defineStyleConfig({
   variants: { primaryButton },
 });
 
-export const tableHead = defineStyleConfig({
-  variants: { tableDHead },
-});
 export const textConfig = defineStyleConfig({
-  variants: { tableText, tableDHead },
+  variants: { ListHeadingText, ListText },
 });

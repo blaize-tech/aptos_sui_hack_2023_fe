@@ -1,7 +1,15 @@
 "use client";
 import { Text, Flex } from "@chakra-ui/react";
 
-const BalanceContainer: React.FC = () => {
+interface BalanceContainerInterface {
+  borderTopRadius: string;
+  borderBottomRadius: string;
+}
+
+const BalanceContainer: React.FC<BalanceContainerInterface> = ({
+  borderTopRadius,
+  borderBottomRadius,
+}) => {
   return (
     <Flex
       w="480px"
@@ -10,6 +18,8 @@ const BalanceContainer: React.FC = () => {
       justifyContent="space-evenly"
       alignItems="center"
       mb="2px"
+      borderTopRadius={borderTopRadius}
+      borderBottomRadius={borderBottomRadius}
     >
       <Flex flexDirection="column" w="192px">
         <Text

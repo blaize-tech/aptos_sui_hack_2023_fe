@@ -79,7 +79,7 @@ export const Dashbord: React.FC = () => {
   );
 };
 
-export const Stake: React.FC = () => {
+export const StakeIconActive: React.FC = () => {
   return (
     <Icon viewBox="0 0 24 24" w="24px" h="24px" fill="none">
       <g opacity="0.66">
@@ -102,30 +102,76 @@ export const Stake: React.FC = () => {
   );
 };
 
-export const Split: React.FC = () => {
+export const StakeIcon: React.FC = () => {
   return (
-    <Icon viewBox="0 0 24 24" w="24px" h="24px" fill="none">
+    <Icon w="24px" h="24px" viewBox="0 0 24 24" fill="none">
       <g opacity="0.66">
         <path
-          d="M17 3H21V7M7 3H3V7"
+          d="M19.625 18.965C20.496 17.895 21 16.562 21 15V14.464C20.9941 12.8293 20.5167 11.2311 19.625 9.861C17.597 6.707 14.468 4.225 10.711 2.795L8.625 2L9.188 5C9.476 7.01 8.324 8.948 6.375 10C4.338 11.1 3 12.794 3 14.912V15C3 17 4.5 19 6 20"
           stroke="#777D99"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
         <path
-          d="M21 3L17 7M12 14.07C12.0003 12.7445 12.5269 11.4734 13.464 10.536L14 10M12 14.07V21M12 14.07C11.9997 12.7445 11.4731 11.4734 10.536 10.536L3 3M12 14.07V15"
+          d="M12 22C10.343 22 9 20.3879 9 18.4C9 16.825 10.016 15.5639 10.91 14.4085L12 13L13.09 14.4085C13.984 15.565 15 16.825 15 18.4C15 20.3879 13.657 22 12 22Z"
           stroke="#777D99"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
       </g>
     </Icon>
   );
 };
 
-export const Pools: React.FC = () => {
+export const SplitIcon: React.FC = () => {
+  return (
+    <Icon viewBox="0 0 24 24" w="24px" h="24px" fill="none">
+      <g opacity="0.66">
+        <path
+          d="M17 3H21V7M7 3H3V7"
+          stroke="#777D99"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M21 3L17 7M12 14.07C12.0003 12.7445 12.5269 11.4734 13.464 10.536L14 10M12 14.07V21M12 14.07C11.9997 12.7445 11.4731 11.4734 10.536 10.536L3 3M12 14.07V15"
+          stroke="#777D99"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+    </Icon>
+  );
+};
+
+export const SplitIconActive: React.FC = () => {
+  return (
+    <Icon w="24px" h="24px" viewBox="0 0 24 24" fill="none">
+      <g opacity="0.66">
+        <path
+          d="M21 3L17 7M12 14.07C12.0003 12.7445 12.5269 11.4734 13.464 10.536L14 10M12 14.07V21M12 14.07C11.9997 12.7445 11.4731 11.4734 10.536 10.536L3 3M12 14.07V15"
+          stroke="#E1E6FB"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M17 3H21V7M7 3H3V7"
+          stroke="#599CFF"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+    </Icon>
+  );
+};
+
+export const PoolsIcon: React.FC = () => {
   return (
     <Icon viewBox="0 0 24 24" w="24px" h="24px" fill="none">
       <g opacity="0.66">
@@ -156,6 +202,43 @@ export const Pools: React.FC = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+        />
+      </g>
+    </Icon>
+  );
+};
+
+export const PoolsIconActive: React.FC = () => {
+  return (
+    <Icon viewBox="0 0 24 24" w="24px" h="24px" fill="none">
+      <g opacity="0.66">
+        <path
+          d="M5.5 22C6.88071 22 8 20.8807 8 19.5C8 18.1193 6.88071 17 5.5 17C4.11929 17 3 18.1193 3 19.5C3 20.8807 4.11929 22 5.5 22Z"
+          stroke="#E1E6FB"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13 14C14.1046 14 15 13.1046 15 12C15 10.8954 14.1046 10 13 10C11.8954 10 11 10.8954 11 12C11 13.1046 11.8954 14 13 14Z"
+          stroke="#599CFF"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M18.5 7C19.8807 7 21 5.88071 21 4.5C21 3.11929 19.8807 2 18.5 2C17.1193 2 16 3.11929 16 4.5C16 5.88071 17.1193 7 18.5 7Z"
+          stroke="#E1E6FB"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13 19H16.5C17.4283 19 18.3185 18.6313 18.9749 17.9749C19.6313 17.3185 20 16.4283 20 15.5C20 14.5717 19.6313 13.6815 18.9749 13.0251C18.3185 12.3687 17.4283 12 16.5 12H8.5C7.57174 12 6.6815 11.6313 6.02513 10.9749C5.36875 10.3185 5 9.42826 5 8.5C5 7.57174 5.36875 6.6815 6.02513 6.02513C6.6815 5.36875 7.57174 5 8.5 5H11"
+          stroke="#599CFF"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
       </g>
     </Icon>
