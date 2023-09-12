@@ -150,7 +150,23 @@ export const Split = () => {
                     h="64px"
                     pl="20px"
                   >
-                    {stakeAmount}
+                    <NumberInput defaultValue={0} precision={2} value={stakeAmount}>
+                      <NumberInputField
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                        // onChange={onChaneStakeAmount}
+                      />
+                    </NumberInput>
                     <Select
                       border={0}
                       borderRadius="16px"
@@ -176,7 +192,23 @@ export const Split = () => {
                     h="64px"
                     pl="20px"
                   >
-                    {stakeAmount}
+                    <NumberInput defaultValue={0} precision={2} value={stakeAmount}>
+                      <NumberInputField
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                        // onChange={onChaneStakeAmount}
+                      />
+                    </NumberInput>
                     <Select
                       border={0}
                       borderRadius="16px"
@@ -305,7 +337,23 @@ export const Split = () => {
                       h="64px"
                       pl="20px"
                   >
-                    {withdrawAmount}
+                    <NumberInput defaultValue={0} precision={2} value={withdrawAmount}>
+                      <NumberInputField
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                        // onChange={onChaneStakeAmount}
+                      />
+                    </NumberInput>
                     <Select
                         border={0}
                         borderRadius="16px"
