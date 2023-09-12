@@ -3,9 +3,16 @@ import { Box, Text, Grid, GridItem, Button, Flex, Select } from '@chakra-ui/reac
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
 import { AptCoin } from '@look/components/Icons';
+import {useStore} from "@utils/store";
 
 export const Stake = () => {
+  const { dispatch } = useStore();
   const [activeTab, setActiveTab] = useState<number>(0);
+
+  const handleConnectWallet = async () => {
+    console.log('handleConnectWallet');
+    dispatch({ type: "connect", wallet: "asdfasda", balance: "324234234" });
+  };
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
   return (
@@ -21,7 +28,7 @@ export const Stake = () => {
               Tagline Will Goes Here
             </Text>
           </Box>
-          <Button>Connect Wallet</Button>
+          <Button onClick={handleConnectWallet}>Connect Wallet</Button>
         </Grid>
         <Box maxW="480px" m="0 auto">
           <TabList active={activeTab} onChange={handleTabChange}>
