@@ -31,7 +31,7 @@ export const Stake = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const [stakeAmount, setStakeAmount] = useState<number>(0);
   const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
