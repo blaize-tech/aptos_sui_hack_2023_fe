@@ -60,6 +60,11 @@ export const Swap = () => {
             console.log("tokenMetadata", tokenMetadata);
             const hash = await blockChainCore.getSwap().swapAssetForCoin(wallet, tokenMetadata, value);
             console.log("|hash", hash);
+        } else {
+            const tokenMetadata = await blockChainCore.getMetadata(symbolIn);
+            console.log("tokenMetadata", tokenMetadata);
+            const hash = await blockChainCore.getSwap().swapCoinForAsset(wallet, tokenMetadata, value);
+            console.log("|hash", hash);
         }
         requestUpdateInfo();
     };
