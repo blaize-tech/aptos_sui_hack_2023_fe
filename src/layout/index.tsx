@@ -22,7 +22,7 @@ import {InitAptos} from "@utils/blockchain";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
 
-    InitAptos();
+    InitAptos().catch(console.error);
 
     const wallets = [
         new FewchaWallet(),
