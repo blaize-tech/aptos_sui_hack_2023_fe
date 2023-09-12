@@ -62,6 +62,13 @@ export const Swap = () => {
         setSwapAmountIn(val.target.value);
     };
 
+    const handleChangeSymbolIn = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSymbolIn(event.target.value)
+    };
+    const handleChangeSymbolOut = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSymbolOut(event.target.value)
+    };
+
     const assetsOptions = [];
     assetSymbols.forEach((symbol) => {
         assetsOptions.push(
@@ -134,6 +141,8 @@ export const Swap = () => {
                                 color="gray"
                                 w="auto"
                                 pr="10px"
+                                value={symbolIn}
+                                onChange={handleChangeSymbolIn}
                             >
                                 {assetsOptions}
                             </Select>
@@ -186,6 +195,8 @@ export const Swap = () => {
                                 color="gray"
                                 w="auto"
                                 pr="10px"
+                                value={symbolOut}
+                                onChange={handleChangeSymbolOut}
                             >
                                 {assetsOptions}
                             </Select>
