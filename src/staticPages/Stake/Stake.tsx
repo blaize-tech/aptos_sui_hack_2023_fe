@@ -167,20 +167,20 @@ export const Stake = () => {
                   </Flex>
                 </Box>
                 {/*< ----- >*/}
-                <Select
-                  placeholder="Select Validator"
-                  bgColor="blue.darkLight"
-                  h="64px"
-                  border={0}
-                  borderRadius="20px"
-                  fontWeight={500}
-                  color="gray"
-                  mb="32px"
-                >
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </Select>
+                {/*<Select*/}
+                {/*  placeholder="Select Validator"*/}
+                {/*  bgColor="blue.darkLight"*/}
+                {/*  h="64px"*/}
+                {/*  border={0}*/}
+                {/*  borderRadius="20px"*/}
+                {/*  fontWeight={500}*/}
+                {/*  color="gray"*/}
+                {/*  mb="32px"*/}
+                {/*>*/}
+                {/*  <option value="option1">Option 1</option>*/}
+                {/*  <option value="option2">Option 2</option>*/}
+                {/*  <option value="option3">Option 3</option>*/}
+                {/*</Select>*/}
                 <Grid
                   templateColumns="1fr auto"
                   gap="24px"
