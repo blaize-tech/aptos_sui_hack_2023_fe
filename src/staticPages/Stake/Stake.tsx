@@ -93,7 +93,7 @@ export const Stake = () => {
                     fontSize="22px"
                     fontWeight={900}
                   >
-                    <NumberInput defaultValue={0} precision={2}>
+                    <NumberInput defaultValue={0} precision={2} value={stakeAmount}>
                       <NumberInputField
                         p={0}
                         border={0}
@@ -107,7 +107,6 @@ export const Stake = () => {
                         _focus={{
                           boxShadow: 'none',
                         }}
-                        value={stakeAmount}
                         onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
@@ -142,7 +141,7 @@ export const Stake = () => {
                     fontSize="22px"
                     fontWeight={900}
                   >
-                    <NumberInput defaultValue={0} precision={2}>
+                    <NumberInput defaultValue={0} precision={2} value={stakeAmount}>
                       <NumberInputField
                         p={0}
                         border={0}
@@ -156,7 +155,6 @@ export const Stake = () => {
                         _focus={{
                           boxShadow: 'none',
                         }}
-                        value={stakeAmount}
                         onChange={onChaneStakeAmount}
                       />
                     </NumberInput>
