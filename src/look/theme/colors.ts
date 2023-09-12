@@ -14,6 +14,7 @@ const colors: Colors = {
     dark: '#0C1229',
     darkLight: 'rgba(29, 39, 71, 0.40)',
     btn: '#3387B7',
+    btnHover: '#43a8e5',
   },
 };
 

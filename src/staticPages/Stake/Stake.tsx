@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Text, Grid, GridItem, Button, Flex, Select } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import {
+  Box,
+  Text,
+  Grid,
+  GridItem,
+  Button,
+  Flex,
+  Select,
+  NumberInput,
+  NumberInputField,
+} from '@chakra-ui/react';
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
 import { AptCoin } from '@look/components/Icons';
-import {useStore} from "@utils/store";
-import {ConnectWallet, InitAptos} from "@utils/blockchain";
+import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 
 export const Stake = () => {
-  const store = useStore();
-  const { dispatch, state } = store;
   const [activeTab, setActiveTab] = useState<number>(0);
 
-  useEffect(() => {
-    InitAptos(store).catch(console.error);
-  }, []);
-
-  const handleConnectWallet = async () => {
-    await ConnectWallet(store);
-  };
-
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
+
   return (
     <Box>
       <HtmlMeta title="Stake" />
@@ -33,7 +33,7 @@ export const Stake = () => {
               Tagline Will Goes Here
             </Text>
           </Box>
-          <Button onClick={handleConnectWallet}>Connect Wallet</Button>
+          <ConnectWalletButton />
         </Grid>
         <Box maxW="480px" m="0 auto">
           <TabList active={activeTab} onChange={handleTabChange}>
@@ -63,7 +63,22 @@ export const Stake = () => {
                     fontSize="22px"
                     fontWeight={900}
                   >
-                    <Text>$0</Text>
+                    <NumberInput defaultValue={0} precision={2}>
+                      <NumberInputField
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                      />
+                    </NumberInput>
                     <Flex alignItems="center" gap="28px">
                       <AptCoin />
                       APT
@@ -95,7 +110,22 @@ export const Stake = () => {
                     fontSize="22px"
                     fontWeight={900}
                   >
-                    <Text>$0</Text>
+                    <NumberInput defaultValue={0} precision={2}>
+                      <NumberInputField
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                      />
+                    </NumberInput>
                     <Flex alignItems="center" gap="28px">
                       <AptCoin />
                       phAPT
