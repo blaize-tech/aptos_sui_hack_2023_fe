@@ -3,7 +3,6 @@ import { Box, Container, Grid } from '@chakra-ui/react';
 import Sidebar from './components/Sidebar';
 import {StoreProvider} from "@utils/store";
 import {AutoConnectProvider} from "./components/AutoConnectProvider";
-import dynamic from "next/dynamic";
 import {
     AptosWalletAdapterProvider,
 } from "@aptos-labs/wallet-adapter-react";
@@ -19,13 +18,6 @@ import { TokenPocketWallet } from "@tp-lab/aptos-wallet-adapter";
 import { TrustWallet } from "@trustwallet/aptos-wallet-adapter";
 import { WelldoneWallet } from "@welldone-studio/aptos-wallet-adapter";
 
-const WalletSelectorAntDesign = dynamic(
-    () => import("./components/WalletSelectorAntDesign"),
-    {
-        suspense: false,
-        ssr: false,
-    }
-);
 
 const Layout = ({ children }: { children: JSX.Element }) => {
 
@@ -61,7 +53,6 @@ const Layout = ({ children }: { children: JSX.Element }) => {
                               >
                                   {children}
                               </Box>
-                              <WalletSelectorAntDesign/>
                           </Grid>
                       </Container>
                   </Box>
