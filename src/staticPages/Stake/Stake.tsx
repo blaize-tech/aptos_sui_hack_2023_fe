@@ -17,11 +17,17 @@ import {
   useWallet,
 } from "@aptos-labs/wallet-adapter-react";
 import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
+import blockChainCore from "@utils/blockchain";
 
 export const Stake = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
+
+  const stake = async () => {
+    console.log(blockChainCore);
+    await blockChainCore.getStaking().stakeApt(2342);
+  };
 
   return (
     <Box>
@@ -177,7 +183,7 @@ export const Stake = () => {
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
-                  <Button>Accept and Bond</Button>
+                  <Button onClick={stake}>Accept and Bond</Button>
                 </Flex>
                 {/*< ----- >*/}
               </Box>
