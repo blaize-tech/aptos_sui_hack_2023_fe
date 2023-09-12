@@ -3,11 +3,15 @@ import { Box, Text, Grid, GridItem, Button, Flex, Select } from '@chakra-ui/reac
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
 import { AptCoin } from '@look/components/Icons';
+import {
+  useWallet,
+} from "@aptos-labs/wallet-adapter-react";
 import {useStore} from "@utils/store";
 import {ConnectWallet, InitAptos} from "@utils/blockchain";
 
 export const Stake = () => {
   const store = useStore();
+  const { wallets, connect } = useWallet();
   const { dispatch, state } = store;
   const [activeTab, setActiveTab] = useState<number>(0);
 
@@ -16,6 +20,8 @@ export const Stake = () => {
   }, []);
 
   const handleConnectWallet = async () => {
+    console.log("wallets", wallets);
+    // connect(wallets.indexOf(0));
     await ConnectWallet(store);
   };
 
