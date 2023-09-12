@@ -3,11 +3,11 @@ import {AptosAccount, HexString} from "aptos";
 
 class FungibleAsset {
     contractAddress: string;
-    private eventHandler: any;
+    symbol: string;
 
-    constructor(contractAddress, walletWrapper, eventHandler) {
+    constructor(contractAddress, symbol) {
         this.contractAddress = contractAddress;
-        this.eventHandler = eventHandler;
+        this.symbol = symbol;
     }
 
     async transfer(wallet, playerAddress, to, amount) {
@@ -25,14 +25,19 @@ class FungibleAsset {
         return await wallet.signAndSubmit(payload, options).then(res => {
             return res.result.hash;
         });
-        signAndSubmitTransaction(playerAddress, payload).then(console.log);
+        // signAndSubmitTransaction(playerAddress, payload).then(console.log);
     }
 
-    async balanceOf(playerAddress, userAddress) {
+    async balanceOf(userAddress) {
         return "24323423"
     }
 
-    handleEvents() {
+    getContractAddress(): string {
+        return this.contractAddress;
+    }
+
+    getSymbol(): string {
+        return this.symbol;
     }
 }
 

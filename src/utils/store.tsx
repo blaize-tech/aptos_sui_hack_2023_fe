@@ -1,42 +1,28 @@
 import React, {PropsWithChildren} from "react";
 
-type ConnectAction = { type: "connect"; wallet: string; balance: string };
-type DisconnectAction = { type: "disconnect" };
+type UpdateBalanceAction = { type: "update-balance"; asset: string; balance: string };
 
 type Action =
-    | ConnectAction
-    | DisconnectAction
+    | UpdateBalanceAction
 
 type Dispatch = (action: Action) => void;
 
 
 type State = {
-    wallet: string | null;
-    isWalletConnected: boolean;
-    balance: string | null;
+    balances: Map<string, string | number>;
 };
 
 const initialState: State = {
-    wallet: null,
-    isWalletConnected: false,
-    balance: null,
+    balances: new Map<string, string | number>()
 } as const;
 
 function storeReducer(state: State, action: Action): State {
     switch (action.type) {
-        case "connect": {
-            console.log('storeReducer connect');
-            const {wallet, balance} = action;
-            const newState = {...state, wallet, balance, status: "idle"} as State;
-            const info = JSON.stringify(newState);
-            window.localStorage.setItem("walletState", info);
-
+        case "update-balance": {
+            const {asset, balance} = action;
+            const newState = {...state} as State;
+            newState.balances[asset] = balance;
             return newState;
-        }
-        case "disconnect": {
-            window.localStorage.removeItem("walletState");
-
-            return {...state, wallet: null, balance: null};
         }
         default: {
             throw new Error("Unhandled action type");
