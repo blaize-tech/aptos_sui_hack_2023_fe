@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Text, Grid, GridItem, Button, Flex, Select } from '@chakra-ui/react';
 import { HtmlMeta } from '@look/components';
 import { Tab, TabList } from '@look/components/Tabs';
 import { AptCoin } from '@look/components/Icons';
 import {useStore} from "@utils/store";
+import {ConnectWallet, InitAptos} from "@utils/blockchain";
 
 export const Stake = () => {
-  const { dispatch } = useStore();
+  const store = useStore();
+  const { dispatch, state } = store;
   const [activeTab, setActiveTab] = useState<number>(0);
 
+  useEffect(() => {
+    InitAptos(store).catch(console.error);
+  }, []);
+
   const handleConnectWallet = async () => {
-    console.log('handleConnectWallet');
-    dispatch({ type: "connect", wallet: "asdfasda", balance: "324234234" });
+    await ConnectWallet(store);
   };
 
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
