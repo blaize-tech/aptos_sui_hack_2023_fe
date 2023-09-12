@@ -5,7 +5,7 @@ import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { extendTheme } from "@chakra-ui/react";
-import { buttonTheme, textConfig } from "./theme/themes";
+import { buttonTheme, textConfig, balanseContainer } from "./theme/themes";
 import a from "../../public/asset/svg/bg.svg";
 import b from "../img/mask-group.png";
 
@@ -13,6 +13,7 @@ export const theme = extendTheme({
   components: {
     Button: buttonTheme,
     Text: textConfig,
+    Flex: balanseContainer,
   },
   styles: {
     global: {

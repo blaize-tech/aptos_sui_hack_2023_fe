@@ -1,6 +1,9 @@
 "use client";
 import { Text, Flex } from "@chakra-ui/react";
 
+import Image from "next/image";
+import luna from "../../../../public/luna.png";
+
 interface BalanceContainerInterface {
   borderTopRadius: string;
   borderBottomRadius: string;
@@ -55,15 +58,20 @@ const BalanceContainer: React.FC<BalanceContainerInterface> = ({
         >
           Balance: 0
         </Text>
-        <Text
-          color="#E1E6FB"
-          fontFamily="Orbitron"
-          fontWeight="900"
-          fontSize="22px"
-          lineHeight="28px"
-        >
-          luna
-        </Text>
+        <Flex justifyContent="space-between" alignItems="center">
+          <Image src={luna} width={24} height={24} alt="luna" />
+          <Text
+            ml="8px"
+            color="#E1E6FB"
+            fontFamily="Orbitron"
+            fontWeight="900"
+            fontSize="22px"
+            lineHeight="28px"
+            textTransform="uppercase"
+          >
+            luna
+          </Text>
+        </Flex>
       </Flex>
     </Flex>
   );

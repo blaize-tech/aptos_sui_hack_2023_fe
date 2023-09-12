@@ -1,6 +1,6 @@
 import { MenyIcon } from "@/app/icons/icons";
-import Image from "next/image";
 import { Flex, Center, Text, ListItem } from "@chakra-ui/react";
+import Image from "next/image";
 import luna from "../../../../public/luna.png";
 
 const PoolsListItem: React.FC = () => {

@@ -32,10 +32,23 @@ const ListText = defineStyle({
   color: "#777D99",
 });
 
+const topBalanceContainer = defineStyle({
+  borderTopRadius: "22px",
+  borderBottomRadius: "42px",
+});
+const bottomBalanceContainer = defineStyle({
+  borderBottomRadius: "22px",
+  borderTopRadius: "42px",
+});
+
 export const buttonTheme = defineStyleConfig({
   variants: { primaryButton },
 });
 
 export const textConfig = defineStyleConfig({
   variants: { ListHeadingText, ListText },
+});
+
+export const balanseContainer = defineStyleConfig({
+  variants: { topBalanceContainer, bottomBalanceContainer },
 });
