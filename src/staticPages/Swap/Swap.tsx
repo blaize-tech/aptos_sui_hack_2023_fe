@@ -21,11 +21,8 @@ import blockChainCore from "@utils/blockchain";
 import {useStore} from "@utils/store";
 
 export const Swap = () => {
-    const [activeTab, setActiveTab] = useState<number>(0);
-    const [swapAmount, setSwapAmount] = useState<number>(0);
-    const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
-
-    const handleTabChange = (newActive: number) => setActiveTab(newActive);
+    const [swapAmountIn, setSwapAmountIn] = useState<number>(0);
+    const [swapAmountOut, setSwapAmountOut] = useState<number>(0);
 
     const wallet = useWallet();
     const store = useStore();
@@ -49,7 +46,7 @@ export const Swap = () => {
     };
 
     const swapAPt = async () => {
-        let value = swapAmount * aptPrecision;
+        let value = swapAmountIn * aptPrecision;
         console.log("value", value);
         const hash = await blockChainCore.getStaking().swapApt(wallet, value);
         console.log("|hash", hash)
@@ -57,7 +54,7 @@ export const Swap = () => {
     };
 
     const onChaneSwapAmount = (val) => {
-        setSwapAmount(val.target.value);
+        setSwapAmountIn(val.target.value);
     };
 
     return (
@@ -90,7 +87,7 @@ export const Swap = () => {
                             mb="12px"
                             color="gray"
                         >
-                            <Text>${(aptPrice * swapAmount).toFixed(2)}</Text>
+                            <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
                             <Text>Balance: {aptosBalance / aptPrecision}</Text>
                         </Flex>
                         <Flex
@@ -99,7 +96,7 @@ export const Swap = () => {
                             fontSize="22px"
                             fontWeight={900}
                         >
-                            <NumberInput defaultValue={0} precision={2} value={swapAmount}>
+                            <NumberInput defaultValue={0} precision={2} value={swapAmountIn}>
                                 <NumberInputField
                                     p={0}
                                     border={0}
@@ -138,7 +135,7 @@ export const Swap = () => {
                             mb="12px"
                             color="gray"
                         >
-                            <Text>${(aptPrice * swapAmount).toFixed(2)}</Text>
+                            <Text>${(aptPrice * swapAmountIn).toFixed(2)}</Text>
                             <Text>Balance: {phAPTBalance / aptPrecision}</Text>
                         </Flex>
                         <Flex
@@ -147,7 +144,7 @@ export const Swap = () => {
                             fontSize="22px"
                             fontWeight={900}
                         >
-                            <NumberInput defaultValue={0} precision={2} value={swapAmount}>
+                            <NumberInput defaultValue={0} precision={2} value={swapAmountOut}>
                                 <NumberInputField
                                     p={0}
                                     border={0}
@@ -161,7 +158,6 @@ export const Swap = () => {
                                     _focus={{
                                         boxShadow: 'none',
                                     }}
-                                    onChange={onChaneSwapAmount}
                                 />
                             </NumberInput>
                             <Flex alignItems="center" gap="28px">
@@ -170,21 +166,6 @@ export const Swap = () => {
                             </Flex>
                         </Flex>
                     </Box>
-                    {/*< ----- >*/}
-                    {/*<Select*/}
-                    {/*  placeholder="Select Validator"*/}
-                    {/*  bgColor="blue.darkLight"*/}
-                    {/*  h="64px"*/}
-                    {/*  border={0}*/}
-                    {/*  borderRadius="20px"*/}
-                    {/*  fontWeight={500}*/}
-                    {/*  color="gray"*/}
-                    {/*  mb="32px"*/}
-                    {/*>*/}
-                    {/*  <option value="option1">Option 1</option>*/}
-                    {/*  <option value="option2">Option 2</option>*/}
-                    {/*  <option value="option3">Option 3</option>*/}
-                    {/*</Select>*/}
                     <Grid
                         templateColumns="1fr auto"
                         gap="24px"
@@ -197,18 +178,6 @@ export const Swap = () => {
                         </GridItem>
                         <GridItem textAlign="right">
                             <Text>1 phApt = 1.0001 APT</Text>
-                        </GridItem>
-                        <GridItem>
-                            <Text color="gray">phApt MCap</Text>
-                        </GridItem>
-                        <GridItem textAlign="right">
-                            <Text>$5,379,388,167</Text>
-                        </GridItem>
-                        <GridItem>
-                            <Text color="gray">APT in Vault</Text>
-                        </GridItem>
-                        <GridItem textAlign="right">
-                            <Text>{92440.793 + phAPTBalance / aptPrecision}</Text>
                         </GridItem>
                     </Grid>
                     <Flex justifyContent="center">
