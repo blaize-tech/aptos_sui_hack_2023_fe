@@ -92,7 +92,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 <Box
                   borderRadius="24px 24px 24px 24px"
-                  p="32px 32px 40px"
+                  p="32px"
                   bgColor="blue.darkLight"
                   mb="2px"
                 >
@@ -140,7 +140,7 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 <Box
                   borderRadius="24px 24px 24px 24px"
-                  p="40px 32px 32px"
+                  p="32px"
                   bgColor="blue.darkLight"
                   mb="32px"
                 >
@@ -235,9 +235,9 @@ export const Stake = () => {
               <Box>
                 <Box
                     borderRadius="24px 24px 24px 24px"
-                    p="40px 32px 32px"
+                    p="32px"
                     bgColor="blue.darkLight"
-                    mb="32px"
+                    mb="2px"
                 >
                   <Flex
                       justifyContent="space-between"
@@ -282,9 +282,9 @@ export const Stake = () => {
                 {/*< ----- >*/}
                 <Box
                     borderRadius="24px 24px 24px 24px"
-                    p="32px 32px 40px"
+                    p="32px"
                     bgColor="blue.darkLight"
-                    mb="12px"
+                    mb="32px"
                 >
                   <Flex
                       justifyContent="space-between"

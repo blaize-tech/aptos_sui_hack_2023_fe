@@ -202,9 +202,9 @@ export const Split = () => {
               </Text>
               <Grid templateColumns="repeat(3, 1fr)" gap="48px" mb="150px">
                 <GridItem>
-                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Principal Token Amount
-                  </Text>
+                  {/*<Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>*/}
+                  {/*  Principal Token Amount*/}
+                  {/*</Text>*/}
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
                     Available: {pPhAptBalance}
                   </Text>
@@ -247,9 +247,9 @@ export const Split = () => {
                   </Grid>
                 </GridItem>
                 <GridItem>
-                  <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
-                    Yield Token Amount
-                  </Text>
+                  {/*<Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>*/}
+                  {/*  Yield Token Amount*/}
+                  {/*</Text>*/}
                   <Text color="gray" fontSize="12px" mb="24px" fontWeight={700}>
                     Available: {yPhAptBalance}
                   </Text>
