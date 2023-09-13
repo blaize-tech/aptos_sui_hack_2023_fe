@@ -23,11 +23,16 @@ import {
 import { ConnectWalletButton } from '../../layout/components/ConnectWalletButton';
 import blockChainCore from "@utils/blockchain";
 import { PRECISION, PRICE } from '@utils/blockchain/aptos';
-import {useStore} from "@utils/store";
+import { useStore } from "@utils/store";
+import { useGetBalance, useStakingMethods } from '@utils/sui/hooks';
+import { useWalletKit } from '@mysten/wallet-kit';
+import { OBJECT_RECORD } from '@utils/index';
 
 export const Stake = () => {
-  const { onClose } = useDisclosure()
+  const { currentAccount } = useWalletKit();
+  const { staking } = useStakingMethods();
 
+  const { onClose } = useDisclosure();
   const [activeTab, setActiveTab] = useState<number>(0);
   const [stakeAmount, setStakeAmount] = useState<number>(0);
   const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
@@ -38,7 +43,11 @@ export const Stake = () => {
   const wallet = useWallet();
   const store = useStore();
 
-  const aptosBalance = store.state.balances["APT"] || "0";
+  // const aptosBalance = store.state.balances["APT"] || "0";
+
+  // sui balance
+  const aptosBalance = useGetBalance(currentAccount?.address || OBJECT_RECORD.AddressZero, 0);
+
   const phAPTBalance = store.state.balances["phAPT"] || "0";
 
   useEffect(() => {
@@ -47,7 +56,7 @@ export const Stake = () => {
   }, [wallet.connected, wallet.account]);
 
   const requestUpdateInfo = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       if (!!wallet.account && !!wallet.account.address)
         blockChainCore.UpdateInfo(store, wallet.account.address).catch(console.error);
     }, 3000)
@@ -98,12 +107,18 @@ export const Stake = () => {
     }
   };
 
-  const onChaneStakeAmount = (val) =>{
+  const onChaneStakeAmount = (val) => {
     setStakeAmount(val.target.value);
   };
 
-  const onChaneWithdrawAmount = (val) =>{
+  const onChaneWithdrawAmount = (val) => {
     setWithdrawAmount(val.target.value);
+  };
+
+
+  const handleStake = async (amount: number) => {
+    let tx = await staking(amount || 0);
+    console.log(tx);
   };
 
   return (
@@ -138,7 +153,8 @@ export const Stake = () => {
                     color="gray"
                   >
                     <Text >${(PRICE * stakeAmount).toFixed(2)}</Text>
-                    <Text>Balance: {aptosBalance/PRECISION}</Text>
+                    {/* <Text>Balance: {aptosBalance/PRECISION}</Text> */}
+                    <Text>Balance: {aptosBalance}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -185,7 +201,7 @@ export const Stake = () => {
                     color="gray"
                   >
                     <Text>${(PRICE * stakeAmount).toFixed(2)}</Text>
-                    <Text>Balance: {phAPTBalance/PRECISION}</Text>
+                    <Text>Balance: {phAPTBalance / PRECISION}</Text>
                   </Flex>
                   <Flex
                     justifyContent="space-between"
@@ -232,11 +248,11 @@ export const Stake = () => {
                 {/*  <option value="option3">Option 3</option>*/}
                 {/*</Select>*/}
                 <Grid
-                    templateColumns="1fr auto"
-                    gap="24px"
-                    fontSize="14px"
-                    fontWeight={700}
-                    mb="41px"
+                  templateColumns="1fr auto"
+                  gap="24px"
+                  fontSize="14px"
+                  fontWeight={700}
+                  mb="41px"
                 >
                   <GridItem>
                     <Text color="gray">phAPT to APT Rate</Text>
@@ -258,7 +274,8 @@ export const Stake = () => {
                   </GridItem>
                 </Grid>
                 <Flex justifyContent="center">
-                  <Button onClick={stakeAPt}>Accept and Bond</Button>
+                  {/* <Button onClick={stakeAPt}>Accept and Bond</Button> */}
+                  <Button onClick={handleStake.bind(null, 10000000)}>Accept and Bond</Button>
                 </Flex>
                 {/*< ----- >*/}
               </Box>
@@ -266,43 +283,43 @@ export const Stake = () => {
             <Tab title="Redeem">
               <Box>
                 <Box
-                    borderRadius="24px 24px 48px 48px"
-                    p="32px"
-                    bgColor="blue.darkLight"
-                    mb="2px"
+                  borderRadius="24px 24px 48px 48px"
+                  p="32px"
+                  bgColor="blue.darkLight"
+                  mb="2px"
                 >
                   <Flex
-                      justifyContent="space-between"
-                      fontWeight={700}
-                      fontSize="12px"
-                      letterSpacing="0.36px"
-                      mb="12px"
-                      color="gray"
+                    justifyContent="space-between"
+                    fontWeight={700}
+                    fontSize="12px"
+                    letterSpacing="0.36px"
+                    mb="12px"
+                    color="gray"
                   >
                     <Text>${(PRICE * withdrawAmount).toFixed(2)}</Text>
-                    <Text>Balance: {phAPTBalance/PRECISION}</Text>
+                    <Text>Balance: {phAPTBalance / PRECISION}</Text>
                   </Flex>
                   <Flex
-                      justifyContent="space-between"
-                      fontFamily="orbitron"
-                      fontSize="22px"
-                      fontWeight={900}
+                    justifyContent="space-between"
+                    fontFamily="orbitron"
+                    fontSize="22px"
+                    fontWeight={900}
                   >
                     <NumberInput defaultValue={0} precision={2} value={withdrawAmount}>
                       <NumberInputField
-                          p={0}
-                          border={0}
-                          outline="none"
-                          h="auto"
-                          boxShadow="none"
-                          fontFamily="orbitron"
-                          fontSize="22px"
-                          fontWeight={900}
-                          placeholder="0.00"
-                          _focus={{
-                            boxShadow: 'none',
-                          }}
-                          onChange={onChaneWithdrawAmount}
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                        onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
                     <Flex alignItems="center" gap="8px">
@@ -313,43 +330,44 @@ export const Stake = () => {
                 </Box>
                 {/*< ----- >*/}
                 <Box
-                    borderRadius="48px 48px 24px 24px"
-                    p="32px"
-                    bgColor="blue.darkLight"
-                    mb="32px"
+                  borderRadius="48px 48px 24px 24px"
+                  p="32px"
+                  bgColor="blue.darkLight"
+                  mb="32px"
                 >
                   <Flex
-                      justifyContent="space-between"
-                      fontWeight={700}
-                      fontSize="12px"
-                      letterSpacing="0.36px"
-                      mb="12px"
-                      color="gray"
+                    justifyContent="space-between"
+                    fontWeight={700}
+                    fontSize="12px"
+                    letterSpacing="0.36px"
+                    mb="12px"
+                    color="gray"
                   >
                     <Text>${(PRICE * withdrawAmount).toFixed(2)}</Text>
-                    <Text>Balance: {aptosBalance/PRECISION}</Text>
+                    {/* <Text>Balance: {aptosBalance/PRECISION}</Text> */}
+                    <Text>Balance: {aptosBalance}</Text>
                   </Flex>
                   <Flex
-                      justifyContent="space-between"
-                      fontFamily="orbitron"
-                      fontSize="22px"
-                      fontWeight={900}
+                    justifyContent="space-between"
+                    fontFamily="orbitron"
+                    fontSize="22px"
+                    fontWeight={900}
                   >
                     <NumberInput defaultValue={0} precision={2} value={withdrawAmount}>
                       <NumberInputField
-                          p={0}
-                          border={0}
-                          outline="none"
-                          h="auto"
-                          boxShadow="none"
-                          fontFamily="orbitron"
-                          fontSize="22px"
-                          fontWeight={900}
-                          placeholder="0.00"
-                          _focus={{
-                            boxShadow: 'none',
-                          }}
-                          onChange={onChaneWithdrawAmount}
+                        p={0}
+                        border={0}
+                        outline="none"
+                        h="auto"
+                        boxShadow="none"
+                        fontFamily="orbitron"
+                        fontSize="22px"
+                        fontWeight={900}
+                        placeholder="0.00"
+                        _focus={{
+                          boxShadow: 'none',
+                        }}
+                        onChange={onChaneWithdrawAmount}
                       />
                     </NumberInput>
                     <Flex alignItems="center" gap="8px">
@@ -376,11 +394,11 @@ export const Stake = () => {
                 {/*  <option value="option3">Option 3</option>*/}
                 {/*</Select>*/}
                 <Grid
-                    templateColumns="1fr auto"
-                    gap="24px"
-                    fontSize="14px"
-                    fontWeight={700}
-                    mb="41px"
+                  templateColumns="1fr auto"
+                  gap="24px"
+                  fontSize="14px"
+                  fontWeight={700}
+                  mb="41px"
                 >
                   <GridItem>
                     <Text color="gray">phAPT to APT Rate</Text>
@@ -416,8 +434,8 @@ export const Stake = () => {
           <ModalBody textAlign="center" py="40px" w={600}>
 
             <Text textAlign="center" fontFamily="orbitron"
-                  fontSize="24px" opacity="0.6"
-                  fontWeight={900}>Waiting for finalization ...</Text>
+              fontSize="24px" opacity="0.6"
+              fontWeight={900}>Waiting for finalization ...</Text>
           </ModalBody>
         </ModalContent>
       </Modal>

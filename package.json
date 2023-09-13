@@ -24,6 +24,8 @@
     "@flipperplatform/wallet-adapter-plugin": "latest",
     "@haechi-labs/face-aptos-adapter-plugin": "latest",
     "@martianwallet/aptos-wallet-adapter": "latest",
+    "@mysten/sui.js": "^0.41.2",
+    "@mysten/wallet-kit": "^0.7.2",
     "@nightlylabs/aptos-wallet-adapter-plugin": "latest",
     "@openblockhq/aptos-wallet-adapter": "latest",
     "@pontem/wallet-adapter-plugin": "latest",
