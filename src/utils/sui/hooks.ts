@@ -62,29 +62,132 @@ export const useStakingMethods = () => {
 		return tx;
 	};
 
-	const unstaking = async (amount) => {
-		const txb = new TransactionBlock();
-		console.log('Starting Staking');
+	const mintTokens = async wallet => {
+		let txb = new TransactionBlock();
 		txb.moveCall({
-			target: `${OBJECT_RECORD.PACKAGE_ID}::interface::unstake`,
+			target: `0x2::coin::mint_and_transfer`,
+			typeArguments: [ process.env.PPSUI_TYPE ],
 			arguments: [
-				txb.object(OBJECT_RECORD.PZH_STORAGE),
-				txb.object(OBJECT_RECORD.PZH_BALANCE),
-				txb.object(OBJECT_RECORD.PZH_ACCOUNT_STORAGE),
-				txb.object(OBJECT_RECORD.IPX_STORAGE),
-				txb.object(OBJECT_RECORD.CLOCK_OBJECT),
-				txb.pure(amount),
-			],
-			typeArguments: [],
+				txb.object(process.env.PPSUI_TREASURY),
+				txb.pure(10000000000),
+				txb.object(wallet)
+			]
 		});
 
 		txb.setGasBudget(300000000);
-		const tx = await signAndExecuteTransactionBlock({
+		await signAndExecuteTransactionBlock({
 			transactionBlock: txb,
 			requestType: 'WaitForEffectsCert',
 			options: { showEffects: true },
 		});
-		return tx;
+
+		txb = new TransactionBlock();
+		txb.moveCall({
+			target: `0x2::coin::mint_and_transfer`,
+			typeArguments: [ process.env.YPSUI_TYPE ],
+			arguments: [
+				txb.object(process.env.YPSUI_TREASURY),
+				txb.pure(10000000000),
+				txb.object(wallet)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
 	};
-	return { staking, unstaking };
+
+	const generatePool = async () => {
+		let txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::split::generate_pool`,
+			typeArguments: [ 
+				process.env.PPSUI_TYPE,
+				process.env.YPSUI_TYPE 
+			],
+			arguments: []
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+	}
+
+	const createPocket = async () => {
+		let txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::split::create_pocket`,
+			typeArguments: [ ],
+			arguments: []
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+	}
+
+	const mergeCoins = async (pPSUI, yPSUI) => {
+		let txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::split::deposit_partly`,
+			typeArguments: [
+				process.env.PPSUI_TYPE,
+				process.env.YPSUI_TYPE 
+			],
+			arguments: [
+				txb.object(process.env.POOL),
+				txb.makeMoveVec({ objects: [txb.object(process.env.PPSUI_ID)] }),
+				txb.makeMoveVec({ objects: [txb.object(process.env.YPSUI_ID)] }),
+				txb.pure(pPSUI),
+				txb.pure(yPSUI),
+				txb.object(process.env.POCKED)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		return await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
+	}
+
+	const splitCoins = async (pPSUI, yPSUI) => {
+		let txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::split::withdraw_out`,
+			typeArguments: [
+				process.env.PPSUI_TYPE,
+				process.env.YPSUI_TYPE 
+			],
+			arguments: [
+				txb.object(process.env.POOL),
+				txb.makeMoveVec({ objects: [txb.object(process.env.PSUI_ID)] }),
+				txb.pure(pPSUI),
+				txb.pure(yPSUI),
+				txb.object(process.env.POCKED)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		return await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
+	}
+
+	return { staking, mintTokens, generatePool, createPocket, mergeCoins, splitCoins };
 }

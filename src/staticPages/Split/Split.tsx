@@ -14,21 +14,26 @@ import {
   useWallet,
 } from "@aptos-labs/wallet-adapter-react";
 import { PRECISION, toDisplayValue } from '@utils/blockchain/aptos';
+import { useStakingMethods } from '@utils/sui/hooks';
+import { useWalletKit } from '@mysten/wallet-kit';
 
 export const Split = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const [stakeAmount, setStakeAmount] = useState<number>(0);
   const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
 
+  const { mintTokens, generatePool, createPocket, mergeCoins, splitCoins } = useStakingMethods();
+  const { currentAccount } = useWalletKit();
+
   const handleTabChange = (newActive: number) => setActiveTab(newActive);
 
   const wallet = useWallet();
   const store = useStore();
 
-  const aptosBalance = store.state.balances["APT"] || "0";
-  const phAPTBalance = store.state.balances["phAPT"] || "0";
-  const pPhAptBalance = store.state.balances["pPhApt"] || "0";
-  const yPhAptBalance = store.state.balances["yPhApt"] || "0";
+  const aptosBalance = store.state.balances["SUI"] || "0";
+  const phAPTBalance = store.state.balances["pSUI"] || "0";
+  const pPhAptBalance = store.state.balances["pPSUI"] || "0";
+  const yPhAptBalance = store.state.balances["yPSUI"] || "0";
 
   const requestUpdateInfo = () => {
     setTimeout(()=>{
@@ -41,19 +46,14 @@ export const Split = () => {
     requestUpdateInfo()
   }, [wallet.connected, wallet.account]);
 
-    const stakePhAPt = async () => {
-    let value = stakeAmount * Math.pow(10, 8);
-    console.log("value", value);
-    const hash = await blockChainCore.getStaking().stakePhApt(wallet, value);
-    console.log("|hash", hash)
-    requestUpdateInfo();
+  const split = async () => {
+    const res = await splitCoins(100000, 150000);
+    console.log(res);
   };
 
-  const withdrawPhAPt = async () => {
-    let value = withdrawAmount * Math.pow(10, 8);
-    const hash = await blockChainCore.getStaking().withdrawPhApt(wallet, value);
-    console.log("|hash", hash)
-    requestUpdateInfo();
+  const merge = async () => {
+    const res = await mergeCoins(1000000, 1500000);
+    console.log(res);
   };
 
   const onChaneStakeAmount = (val) =>{
@@ -82,7 +82,7 @@ export const Split = () => {
               Total APT in Vault
             </Text>
             <Text fontFamily="orbitron" fontSize="22px" fontWeight={900}>
-              {92440.793 + phAPTBalance / PRECISION} APT
+              {phAPTBalance / PRECISION} SUI
             </Text>
           </Box>
         </HStack>
@@ -125,7 +125,7 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      phAPT
+                      pSUI
                     </Flex>
                   </Grid>
                 </GridItem>
@@ -161,7 +161,7 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      pPhAPT
+                      pPSUI
                     </Flex>
                   </Grid>
                 </GridItem>
@@ -197,13 +197,13 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      yPhAPT
+                      yPSUI
                     </Flex>
                   </Grid>
                 </GridItem>
               </Grid>
               <Flex justifyContent="center">
-                <Button onClick={stakePhAPt}>Accept and Split</Button>
+                <Button onClick={split}>Accept and Split</Button>
               </Flex>
             </Box>
           </Tab>
@@ -248,7 +248,7 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      pPhAPT
+                      pPSUI
                     </Flex>
                   </Grid>
                 </GridItem>
@@ -287,7 +287,7 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      yPhAPT
+                      yPSUI
                     </Flex>
                   </Grid>
                 </GridItem>
@@ -323,17 +323,24 @@ export const Split = () => {
                     </NumberInput>
                     <Flex alignItems="center" gap="8px" marginRight="12px" fontFamily="orbitron" fontSize="18px" fontWeight={900}>
                       <AptCoin />
-                      phAPT
+                      pSUI
                     </Flex>
                   </Grid>
                 </GridItem>
               </Grid>
               <Flex justifyContent="center">
-                <Button onClick={withdrawPhAPt}>Accept and merge</Button>
+                <Button onClick={merge}>Accept and merge</Button>
               </Flex>
             </Box>
           </Tab>
         </TabList>
+
+        <div style={{display: 'flex', justifyContent: 'space-around', width: '400px', marginTop: '20px'}}>
+          <button onClick={mintTokens.bind(null, currentAccount?.address)}>Mint Tokens</button>
+          <button onClick={generatePool}>Generate Pool</button>
+          <button onClick={createPocket}>Create Pocket</button>
+        </div>
+
       </Box>
     </Box>
   );

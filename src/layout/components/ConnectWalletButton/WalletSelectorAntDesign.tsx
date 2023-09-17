@@ -1,5 +1,3 @@
-import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
-import { WalletKitProvider } from "@mysten/wallet-kit"
 import { ConnectButton, useWalletKit } from "@mysten/wallet-kit";
 import { useEffect, useState } from "react";
 
@@ -15,7 +13,6 @@ const WalletSelectorAntDesign = () => {
   }, [currentAccount]);
 
   return <div>
-    <WalletSelector />
     <ConnectButton
       connectedText={address}
       connectText={"Connect Wallet"}
