@@ -38,12 +38,13 @@ export const useGetBalance = (account: string, actionCount: number) => {
 export const getTokensBalance = async (account: string, ) => {
 	const provider = getProvider();
 	const arr = await provider.getAllCoins({ owner: account });
+	
 	return {
-		PPSUI_ID: arr?.data.find(k => k.coinType === process.env.PPSUI_TYPE)?.coinObjectId,
-		YPSUI_ID: arr?.data.find(k => k.coinType === process.env.YPSUI_TYPE)?.coinObjectId,
-		PSUI_ID: arr?.data.find(k => k.coinType.indexOf('::split') !== -1)?.coinObjectId,
-		SUI: arr?.data.find(k => k.coinType === '0x2::sui::SUI')?.coinObjectId,
-		PHZ: arr?.data.find(k => k.coinType === process.env.PHZ_TYPE)?.coinObjectId
+		PPSUI_ID: arr?.data.find(k => k.coinType === process.env.PPSUI_TYPE && k.balance !== '0')?.coinObjectId,
+		YPSUI_ID: arr?.data.find(k => k.coinType === process.env.YPSUI_TYPE && k.balance !== '0')?.coinObjectId,
+		PSUI_ID: arr?.data.find(k => k.coinType.indexOf('::split') !== -1 && k.balance !== '0')?.coinObjectId,
+		SUI: arr?.data.find(k => k.coinType === '0x2::sui::SUI' && k.balance !== '0')?.coinObjectId,
+		PHZ_ID: arr?.data.find(k => k.coinType === process.env.PHZ_TYPE && k.balance !== '0')?.coinObjectId
 	}
 }
 
@@ -237,6 +238,42 @@ export const useSwapMethods = () => {
 			options: { showEffects: true },
 		});
 
+		txb = new TransactionBlock();
+		txb.moveCall({
+			target: `0x2::coin::mint_and_transfer`,
+			typeArguments: [ process.env.PPSUI_TYPE ],
+			arguments: [
+				txb.object(process.env.PPSUI_TREASURY),
+				txb.pure(1000000000000),
+				txb.object(wallet)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
+		txb = new TransactionBlock();
+		txb.moveCall({
+			target: `0x2::coin::mint_and_transfer`,
+			typeArguments: [ process.env.YPSUI_TYPE ],
+			arguments: [
+				txb.object(process.env.YPSUI_TREASURY),
+				txb.pure(1000000000000),
+				txb.object(wallet)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
 	};
 
 	const buyPHZ = async () => {
@@ -245,14 +282,13 @@ export const useSwapMethods = () => {
 		
 		let txb = new TransactionBlock();
 		txb.moveCall({
-			target: `${process.env.SPLIT_ID}::staking::stake`,
+			target: `${process.env.SPLIT_ID}::swap::sui_phz`,
 			typeArguments: [],
 			arguments: [
-				txb.object(tokens.SUI),
-				txb.object(process.env.USER_STATE),
-				txb.object(process.env.REVARD_STATE),
 				txb.object(process.env.TREASURY),
-				txb.object(process.env.SUI_CLOCK)
+				txb.object(tokens.SUI),
+				txb.object(tokens.PHZ_ID),
+				txb.pure(1000000000)
 			]
 		});
 
@@ -266,17 +302,16 @@ export const useSwapMethods = () => {
 	}
 
 	const sellPHZ = async () => {
-		
+		let tokens = await getTokensBalance(currentAccount?.address);
+
 		let txb = new TransactionBlock();
 		txb.moveCall({
-			target: `${process.env.SPLIT_ID}::staking::withdraw`,
+			target: `${process.env.SPLIT_ID}::swap::phz_sui`,
 			typeArguments: [],
 			arguments: [
-				txb.object(process.env.USER_STATE),
-				txb.object(process.env.REVARD_STATE),
 				txb.object(process.env.TREASURY),
-				txb.pure(1000000000),
-				txb.object(process.env.SUI_CLOCK)
+				txb.pure(2000000000),
+				txb.object(tokens.PHZ_ID)
 			]
 		});
 
@@ -293,27 +328,8 @@ export const useSwapMethods = () => {
 
 	const setRew = async () => {
 		let tokens = await getTokensBalance(currentAccount?.address);
-		
+
 		let txb = new TransactionBlock();
-		txb.moveCall({
-			target: `${process.env.SPLIT_ID}::staking::setRewardDuration`,
-			typeArguments: [],
-			arguments: [
-				txb.object(process.env.ADMIN),
-				txb.object(process.env.REVARD_STATE),
-				txb.pure(1),
-				txb.object(process.env.SUI_CLOCK)
-			]
-		});
-
-		txb.setGasBudget(300000000);
-		await signAndExecuteTransactionBlock({
-			transactionBlock: txb,
-			requestType: 'WaitForEffectsCert',
-			options: { showEffects: true },
-		});
-
-		txb = new TransactionBlock();
 		txb.moveCall({
 			target: `${process.env.SPLIT_ID}::staking::setRewardAmount`,
 			typeArguments: [],
@@ -328,7 +344,7 @@ export const useSwapMethods = () => {
 		});
 
 		txb.setGasBudget(300000000);
-		return await signAndExecuteTransactionBlock({
+		let two = await signAndExecuteTransactionBlock({
 			transactionBlock: txb,
 			requestType: 'WaitForEffectsCert',
 			options: { showEffects: true },
@@ -359,5 +375,46 @@ export const useSwapMethods = () => {
 
 	}
 
-	return { buyPHZ, sellPHZ, mintTokens, setRew, getRew };
+	const addCoins = async () => {
+		let tokens = await getTokensBalance(currentAccount?.address);
+		
+		let txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::swap::addCoins`,
+			typeArguments: [],
+			arguments: [
+				txb.object(tokens.PHZ_ID),
+				txb.object(tokens.PPSUI_ID),
+				txb.object(tokens.YPSUI_ID),
+				txb.object(process.env.TREASURY),
+				txb.pure(10000000000)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+
+		txb = new TransactionBlock();
+		txb.moveCall({
+			target: `${process.env.SPLIT_ID}::swap::addSui`,
+			typeArguments: [],
+			arguments: [
+				txb.object('0x00bcdf191c89ed53045d8acd4e020cdd39b1792b31d342750b6a3f6fbdf74831'),
+				txb.object(process.env.TREASURY)
+			]
+		});
+
+		txb.setGasBudget(300000000);
+		await signAndExecuteTransactionBlock({
+			transactionBlock: txb,
+			requestType: 'WaitForEffectsCert',
+			options: { showEffects: true },
+		});
+	}
+
+	return { buyPHZ, sellPHZ, mintTokens, setRew, addCoins };
 }

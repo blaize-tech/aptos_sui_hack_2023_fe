@@ -31,7 +31,7 @@ export const Swap = () => {
     const [symbolOut, setSymbolOut] = useState<string>("PHZ");
 
     const { currentAccount } = useWalletKit();
-    const { buyPHZ, sellPHZ, mintTokens, setRew, getRew } = useSwapMethods();
+    const { buyPHZ, sellPHZ, mintTokens, setRew, addCoins, test } = useSwapMethods();
 
     const assetSymbols = ['SUI', 'PHZ'];
 
@@ -85,16 +85,19 @@ export const Swap = () => {
     };
 
     const initSwap = async () => { // mint tokens and create storage
-        await mintTokens(currentAccount?.address);
-        // await setRew();
+        // await mintTokens(currentAccount?.address);
+        const tx = await addCoins();
+        console.log(tx);
+        
     }
 
     const swap = async () => {
-        if(symbolIn === 'SUI') await buyPHZ();
-        else await sellPHZ();
+        let tx;
 
-        // const tx = await getRew();
-        // console.log(tx);
+        if(symbolIn === 'SUI') tx = await buyPHZ();
+        else tx = await sellPHZ();
+
+        console.log(tx);
     };
 
     const onChangeSwapAmount = (val) => {
