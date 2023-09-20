@@ -14,7 +14,7 @@ import {
   useWallet,
 } from "@aptos-labs/wallet-adapter-react";
 import { PRECISION, toDisplayValue } from '@utils/blockchain/aptos';
-import { useStakingMethods } from '@utils/sui/hooks';
+import { getTokensBalance, useStakingMethods } from '@utils/sui/hooks';
 import { useWalletKit } from '@mysten/wallet-kit';
 
 export const Split = () => {
@@ -47,12 +47,12 @@ export const Split = () => {
   }, [wallet.connected, wallet.account]);
 
   const split = async () => {
-    const res = await splitCoins(100000, 150000);
+    const res = await splitCoins(10000000, 15000000);
     console.log(res);
   };
 
   const merge = async () => {
-    const res = await mergeCoins(1000000, 1500000);
+    const res = await mergeCoins(10000, 15000);
     console.log(res);
   };
 
