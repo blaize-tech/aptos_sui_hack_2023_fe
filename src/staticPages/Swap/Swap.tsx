@@ -31,7 +31,7 @@ export const Swap = () => {
     const [symbolOut, setSymbolOut] = useState<string>("PHZ");
 
     const { currentAccount } = useWalletKit();
-    const { buyPHZ, sellPHZ, mintTokens, setRew, addCoins, test } = useSwapMethods();
+    const { buyPHZ, sellPHZ, mintTokens, addCoins, addSui } = useSwapMethods();
 
     const assetSymbols = ['SUI', 'PHZ'];
 
@@ -85,10 +85,14 @@ export const Swap = () => {
     };
 
     const initSwap = async () => { // mint tokens and create storage
-        // await mintTokens(currentAccount?.address);
+        await mintTokens(currentAccount?.address);
         const tx = await addCoins();
         console.log(tx);
-        
+    }
+
+    const addSUIinPool = async () => {
+        const tx = await addSui();
+        console.log(tx);
     }
 
     const swap = async () => {
@@ -271,6 +275,7 @@ export const Swap = () => {
 
                 <div style={{display: 'flex', justifyContent: 'space-around', width: '400px', marginTop: '20px'}}>
                     <button onClick={initSwap}>Mint tokens and create Storage</button>
+                    <button onClick={initSwap}>Add SUI in pool</button>
                 </div>
 
             </Box>

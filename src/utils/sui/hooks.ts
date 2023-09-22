@@ -392,13 +392,16 @@ export const useSwapMethods = () => {
 		});
 
 		txb.setGasBudget(300000000);
-		await signAndExecuteTransactionBlock({
+		return await signAndExecuteTransactionBlock({
 			transactionBlock: txb,
 			requestType: 'WaitForEffectsCert',
 			options: { showEffects: true },
 		});
+	}
 
-		txb = new TransactionBlock();
+	const addSui = async () => {
+		const txb = new TransactionBlock();
+
 		txb.moveCall({
 			target: `${process.env.SPLIT_ID}::swap::addSui`,
 			typeArguments: [],
@@ -409,12 +412,12 @@ export const useSwapMethods = () => {
 		});
 
 		txb.setGasBudget(300000000);
-		await signAndExecuteTransactionBlock({
+		return await signAndExecuteTransactionBlock({
 			transactionBlock: txb,
 			requestType: 'WaitForEffectsCert',
 			options: { showEffects: true },
 		});
 	}
 
-	return { buyPHZ, sellPHZ, mintTokens, setRew, addCoins };
+	return { buyPHZ, sellPHZ, mintTokens, setRew, addCoins, addSui };
 }
